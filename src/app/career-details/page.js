@@ -259,7 +259,7 @@ function JobDetailsContent() {
 
             {job.type && (
               <span className="flex items-center gap-2">
-                <img src="/images/work.svg" className="w-4 h-4" />
+                <img src="/images/work.svg" alt="Employment type" className="w-4 h-4" />
                 {job.type}
               </span>
             )}
