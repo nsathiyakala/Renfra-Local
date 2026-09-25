@@ -2,10 +2,13 @@
  
 import { useState, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { axiosGet } from "@/lib/api";
  
 export default function SolutionsRenfra() {
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [solutionIds, setSolutionIds] = useState({});
  
   const solutionCards = [
     {
@@ -33,6 +36,7 @@ export default function SolutionsRenfra() {
       id: "4",
       icon: "/images/sol5.png",
       title: "Operation & Maintenance",
+      aliases: ["Operations & Maintenance", "Operation Maintenance", "O&M"],
       description:
         "At Renfra Energy, our journey to a sustainable energy future doesn't end with the construction of renewable project, Renfra Energy offers a fully integrated suite of services.",
     },
@@ -44,6 +48,42 @@ export default function SolutionsRenfra() {
     //     "Renfra Energy has been in the forefront of providing a range of solutions to help Commercial & Industrial (C&I) customers meet their energy demand goals. ",
     // }
   ];
+
+  useEffect(() => {
+    const fetchSolutionIds = async () => {
+      try {
+        const response = await axiosGet.get(
+          "masters/solutions/get/?web_sts=1&active_status=1"
+        );
+        const solutions = response.data?.data || [];
+        const normalize = (value) => value.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+        const ids = solutions.reduce((result, solution) => {
+          const normalizedTitle = normalize(solution.title || "");
+          const card = solutionCards.find((item) => {
+            const cardTitles = [item.title, ...(item.aliases || [])].map(normalize);
+            return cardTitles.some(
+              (cardTitle) =>
+                normalizedTitle === cardTitle ||
+                normalizedTitle.includes(cardTitle) ||
+                cardTitle.includes(normalizedTitle)
+            );
+          });
+
+          if (card && solution.data_uniq_id) {
+            result[card.id] = solution.data_uniq_id;
+          }
+          return result;
+        }, {});
+
+        setSolutionIds(ids);
+      } catch (error) {
+        console.error("Solution IDs Error:", error);
+      }
+    };
+
+    fetchSolutionIds();
+  }, []);
  
   // Detect mobile view
   useEffect(() => {
@@ -93,8 +133,9 @@ export default function SolutionsRenfra() {
         {/* Responsive grid layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {displayedCards.map((card) => (
-            <div
+            <Link
   key={card.id}
+  href={`/solutions-details/?id=${encodeURIComponent(solutionIds[card.id] || card.id)}`}
   className="group rounded-lg bg-white p-6 shadow-md 
              transition-all duration-300 ease-in-out
              hover:-translate-y-2 hover:scale-[1.03]
@@ -118,7 +159,7 @@ export default function SolutionsRenfra() {
               <p className="text-center text-sm text-[#293E52]">
                 {card.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
  

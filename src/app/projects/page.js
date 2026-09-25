@@ -3,6 +3,8 @@ import MapSection from "@/components/Map";
 import ProjectsSection from "@/components/Projects";
 import CompletedProjects from "@/components/Projects-Map";
 import TamilnaduMap from "@/components/Tamilnadu-Map";
+import InteractiveProjectsMap from "@/components/InteractiveProjectsMap";
+import InteractiveProSec from "@/components/InteractiveProSec";
 
 
 export default function Projects() {
@@ -13,7 +15,9 @@ export default function Projects() {
 <ProjectsSection />
 {/* <MapSection /> */}
 {/* <TamilnaduMap/> */}
-<CompletedProjects />
+{/* <CompletedProjects /> */}
+<InteractiveProjectsMap />
+{/* <InteractiveProSec/> */}
 </>
   );
 }

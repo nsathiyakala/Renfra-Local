@@ -7,6 +7,48 @@ import { useEffect, useState } from "react"
 import { axiosGet } from "@/lib/api"
 import { IMG_ENDPOINT } from "@/lib/config"
 
+function AnimatedCounter({ value }) {
+  const [count, setCount] = useState(0)
+  const stringValue = String(value ?? "0")
+  const match = stringValue.match(/^(.*?)([\d,]+(?:\.\d+)?)(.*)$/)
+
+  useEffect(() => {
+    if (!match) return
+
+    const target = Number(match[2].replace(/,/g, ""))
+    const decimals = (match[2].split(".")[1] || "").length
+    const duration = 4000
+    let animationFrame
+    let startTime
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / duration, 1)
+      const easedProgress = 1 - Math.pow(1 - progress, 3)
+      setCount(Number((target * easedProgress).toFixed(decimals)))
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate)
+      }
+    }
+
+    setCount(0)
+    animationFrame = requestAnimationFrame(animate)
+
+    return () => cancelAnimationFrame(animationFrame)
+  }, [value])
+
+  if (!match) return value
+
+  const decimalPlaces = (match[2].split(".")[1] || "").length
+  const formattedCount = count.toLocaleString("en-US", {
+    minimumFractionDigits: decimalPlaces,
+    maximumFractionDigits: decimalPlaces,
+  })
+
+  return `${match[1]}${formattedCount}${match[3]}`
+}
+
 export default function AboutUsSection() {
   const stats = [
     { img: "/images/abt3.png", number: "650MW", label: "Solar" },
@@ -146,7 +188,7 @@ export default function AboutUsSection() {
                   <Image src={`${IMG_ENDPOINT}${stat.image_path}`} alt={stat.image_name} fill className="object-contain" />
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl md:text-3xl font-bold text-[#293E52]">{stat.value}</p>
+                  <p className="text-2xl md:text-3xl font-bold text-[#293E52]"><AnimatedCounter value={stat.value} /></p>
                   <p className="text-sm md:text-base text-[#293E52] mt-1">{stat.title}</p>
                 </div>
               </motion.div>

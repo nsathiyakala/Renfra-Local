@@ -1,5 +1,6 @@
 import AboutUsSection from "@/components/Home-About";
 import CareerSection from "@/components/Home-Career";
+import CTA from "@/components/CTA";
 import OurProjects, { OurProjectsSection, ProjectHomeSection } from "@/components/Home-Project";
 import SolutionsSection from "@/components/Home-Solutions";
 import { Navbar } from "@/components/Navbar";
@@ -22,7 +23,8 @@ export default function Home() {
 <OurProjectsSection />
 {/* <NewsMedia /> */}
 <TestimonialsSection />
-<CareerSection />
+{/* <CareerSection /> */}
+<CTA />
 
 </>
   );

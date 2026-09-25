@@ -99,7 +99,7 @@ export default function MainCareerSection() {
           impact, explore career opportunities with us.
         </p>
 
-        <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 text-[#293E52]">
+        <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center text-[#293E52]">
           Join Us in Powering a Sustainable Future
         </h1>
 

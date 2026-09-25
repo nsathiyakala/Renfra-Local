@@ -13,6 +13,80 @@ font-family: "Sans-Outline-ExBold",sans-serif
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@keyframes project-loop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - 8px));
+  }
+}
+
+.project-loop {
+  animation-name: project-loop;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.project-map-marker-wrap {
+  border: 0;
+  background: transparent;
+}
+
+.project-map-marker {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 3px solid white;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgb(15 23 42 / 35%);
+}
+
+.project-map-marker::before {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  content: "";
+  animation: project-marker-pulse 2s ease-out infinite;
+}
+
+.project-map-marker span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: white;
+}
+
+.project-map-marker-completed {
+  background: #0f766e;
+}
+
+.project-map-marker-completed::before {
+  background: rgb(15 118 110 / 28%);
+}
+
+.project-map-marker-ongoing {
+  background: #d97706;
+}
+
+.project-map-marker-ongoing::before {
+  background: rgb(217 119 6 / 28%);
+}
+
+@keyframes project-marker-pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(0.75);
+  }
+  60% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
 body {
   font-family: 'Manrope', sans-serif;
 }
