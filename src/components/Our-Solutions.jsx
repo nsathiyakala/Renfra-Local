@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { axiosGet, BASE_URL } from "@/lib/api";
+import { axiosGet } from "@/lib/api";
 import { IMG_ENDPOINT } from "@/lib/config";
 
 export function TabSolutionSection() {
@@ -13,8 +13,7 @@ export function TabSolutionSection() {
   const [tabContent, setTabContent] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const currentTab = tabsData[activeTab]; // ✅ correct
-  console.log(currentTab, "currentTab");
+  const currentTab = tabsData[activeTab];
 
   // Load all solution tabs
   const fetchTabsData = async () => {
@@ -25,28 +24,24 @@ export function TabSolutionSection() {
       );
       const tabs = response.data.data;
       setTabsData(tabs);
-
       if (tabs.length > 0) {
         fetchContentData(tabs[0].data_uniq_id);
       }
     } catch (err) {
       console.error("Tabs Error:", err);
-    }
-    finally {
-    setLoading(false);  
+    } finally {
+      setLoading(false);
     }
   };
 
   // Load content for specific solution
   const fetchContentData = async (uniqId) => {
     if (!uniqId) return;
-
     setLoading(true);
     try {
       const response = await axiosGet.get(
         `masters/solutions/content/get/?solution_id=${uniqId}&web_sts=1`
       );
-
       const contentObj = response.data.data?.[0]?.data;
       setTabContent(contentObj || null);
     } catch (err) {
@@ -67,169 +62,198 @@ export function TabSolutionSection() {
     }
   }, [activeTab]);
 
-  if (loading) {
-  return (
-    <div className="w-full py-16 text-center text-[#293E52] text-lg font-semibold">
-      Loading...
-    </div>
-  );
-}
-
-    if (tabsData.length === 0 && !loading) {
+  // ── Loading skeleton ──────────────────────────────────────────────────────
+  if (loading && tabsData.length === 0) {
     return (
-      <div className="w-full py-16 text-center text-[#293E52] text-lg font-semibold">
+      <div className="w-full py-20 text-center text-[#293E52] text-lg font-semibold">
+        Loading...
+      </div>
+    );
+  }
+
+  if (tabsData.length === 0 && !loading) {
+    return (
+      <div className="w-full py-20 text-center text-[#293E52] text-lg font-semibold">
         No Solutions Found
       </div>
     );
   }
 
-  if (!tabContent && !loading) {
-    return (
-      <div className="w-full py-16 text-center text-[#293E52] text-lg font-semibold">
-        No Data Found
-      </div>
-    );
-  }
-
-  // Extract content
+  // ── Content extraction ────────────────────────────────────────────────────
   const mainDesc = tabContent?.content?.[0]?.description || "";
 
-  const mainImage = tabContent?.image?.[0]?.file_path
-    ? tabContent.image[0].file_path
-    : currentTab?.image;
-
-  console.log(tabContent, "tabContent");
-
-  const stats = [
-    {
-      img: "/images/s1.png",
-      number: tabContent?.stats?.[0]?.stats_data?.[0]?.value,
-      label: tabContent?.stats?.[0]?.stats_data?.[0]?.label,
-    },
-    {
-      img: "/images/s2.png",
-      number: tabContent?.stats?.[0]?.stats_data?.[1]?.value,
-      label: tabContent?.stats?.[0]?.stats_data?.[1]?.label,
-    },
-  ];
-
+  // Static service tags per solution title (shown as pill tags under description)
+  const SERVICE_TAGS = {
+    solar:       ["Design & Engineering", "Procurement", "Construction & Installation", "Operations & Maintenance"],
+    wind:        ["Design & Engineering", "Procurement", "Construction & Installation", "Operations & Maintenance"],
+    battery:     ["Design & Engineering", "Procurement", "Installation", "Commissioning"],
+    operations:  ["Preventive Maintenance", "Corrective Maintenance", "Performance Monitoring", "Asset Management"],
+  };
+  const titleKey = currentTab?.title?.toLowerCase() || "";
+  const services =
+    titleKey.includes("solar")   ? SERVICE_TAGS.solar :
+    titleKey.includes("wind")    ? SERVICE_TAGS.wind :
+    titleKey.includes("battery") ? SERVICE_TAGS.battery :
+    titleKey.includes("operat")  ? SERVICE_TAGS.operations :
+    SERVICE_TAGS.solar;
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Tabs */}
-      <div className="flex gap-4 overflow-x-auto mb-10 scrollbar-hide py-4 md:justify-center flex-nowrap pl-2">
-        {tabsData.map((tab, index) => (
-          <button
-        key={tab.data_uniq_id}
-        onClick={() => setActiveTab(index)}
-        className={`
-          flex flex-col items-center justify-between
-          rounded-lg border 
-          w-32                  /* ⭐ FIXED WIDTH */
-          h-32                  /* ⭐ FIXED HEIGHT */
-          md:w-40 md:h-auto       
-          lg:w-56 lg:h-40
-          p-3
-          cursor-pointer
-          flex-shrink-0        
-          transition
-          ${activeTab === index
-            ? "bg-[#EDEDED] border-[#293E52] scale-105"
-            : "bg-white border-gray-200 hover:scale-105"
-          }
-        `}
-      >
-            <img
-              src={`${IMG_ENDPOINT}${tab.image_path}`}
-              alt={tab.title}
-              className="w-12 h-12 md:w-16 md:h-16 object-contain"
-            />
-            <span className="text-sm md:text-base font-semibold text-[#293E52] text-center line-clamp-2">
-              {tab.title}
-            </span>
-          </button>
-        ))}
-      </div>
+    <section className="w-full bg-[#fff] py-10 sm:py-14 lg:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
 
-      {/* CONTENT */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentTab.data_uniq_id}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -40 }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 border p-6 rounded-lg border-[#329ACD]"
-        >
-          {/* Image */}
-          <div className="flex items-center justify-center">
-            <img
-              src={`${IMG_ENDPOINT}${currentTab.card_image_path}`}
-              alt={currentTab.title}
-              className="w-full h-auto rounded-lg object-cover max-h-84"
-            />
+        {/* ── TOP ROW: Heading left | Tabs right ──────────────────────────── */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12 mb-10 sm:mb-12">
+
+          {/* Left – heading block */}
+          <div className="lg:w-[38%] shrink-0">
+            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-3">
+              <span className="inline-block w-8 h-[2px] bg-emerald-500" />
+              Our Solutions
+            </p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1a3854] leading-snug mb-3">
+              Clean Energy <br className="hidden sm:block" />
+              for a Brighter Tomorrow
+            </h2>
+            <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
+              Explore our renewable energy solutions designed to power a
+              sustainable and efficient future.
+            </p>
           </div>
 
-          {/* Text */}
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <h2 className="text-xl md:text-2xl font-bold text-[#293E52]">
-                {currentTab.title}
-              </h2>
+          {/* Right – tab buttons */}
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            {tabsData.map((tab, index) => (
+              <button
+                key={tab.data_uniq_id}
+                onClick={() => setActiveTab(index)}
+                className={`flex flex-col items-center justify-center gap-2 rounded-2xl border px-3 py-4 sm:py-5 cursor-pointer transition-all duration-200
+                  ${activeTab === index
+                    ? "bg-emerald-50 border-emerald-300 shadow-sm"
+                    : "bg-white border-slate-200 hover:border-emerald-200 hover:bg-emerald-50/40"
+                  }`}
+              >
+                <img
+                  src={`${IMG_ENDPOINT}${tab.image_path}`}
+                  alt={tab.title}
+                  className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+                />
+                <span className="text-xs sm:text-sm font-semibold text-[#1f3d5b] leading-snug text-center">
+                  {tab.title}
+                </span>
+                <span
+                  className={`w-8 h-[3px] rounded-full transition-colors duration-200 ${
+                    activeTab === index ? "bg-emerald-500" : "bg-slate-200"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+        </div>
 
-              <Link href={`/solutions-details?id=${currentTab.data_uniq_id}`}>
-                <ExternalLink className="w-7 h-7 text-[#329ACD]" />
-              </Link>
-            </div>
-
-            <div
-  className="text-[#293E52] mb-4"
-  dangerouslySetInnerHTML={{
-    __html:
-      (mainDesc?.length > 550
-        ? mainDesc.slice(0, 550) + "..."
-        : mainDesc) || "",
-  }}
-/>
-
-
-            <Link
-              href={`/solutions-details?id=${currentTab.data_uniq_id}`}
-              className="text-[#329ACD] font-bold hover:underline"
+        {/* ── CONTENT ROW: Image left | Text right ────────────────────────── */}
+        <AnimatePresence mode="wait">
+          {currentTab && tabContent && (
+            <motion.div
+              key={currentTab.data_uniq_id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.45 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center"
             >
-              Read More →
-            </Link>
+              {/* Solution image */}
+              <div className="w-full overflow-hidden rounded-2xl">
+                <img
+                  src={`${IMG_ENDPOINT}${currentTab.card_image_path}`}
+                  alt={currentTab.title}
+                  className="w-full h-[240px] sm:h-[300px] lg:h-[320px] object-cover"
+                />
+              </div>
 
-            {/* Stats */}
-            {/* <div className="flex flex-col sm:flex-row gap-4 mt-6">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                  className="flex items-start gap-3 p-3 flex-1"
-                >
+              {/* Solution text */}
+              <div className="flex flex-col gap-4">
+                {/* Label */}
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-600">
+                  <span className="inline-block w-8 h-[2px] bg-emerald-500" />
+                  {currentTab.title} Solutions
+                </p>
+
+                {/* Title + external link */}
+                <div className="flex items-center gap-3">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1a3854]">
+                    {currentTab.title}
+                  </h2>
+                  <Link href={`/solutions-details?id=${currentTab.data_uniq_id}`}>
+                    <ExternalLink className="w-5 h-5 text-emerald-600 shrink-0" />
+                  </Link>
+                </div>
+
+                {/* Description */}
+                <div
+                  className="text-sm sm:text-base text-slate-600 leading-relaxed"
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      mainDesc.length > 550
+                        ? mainDesc.slice(0, 550) + "..."
+                        : mainDesc,
+                  }}
+                />
+
+                {/* Services tag row */}
+                {/* <div className="flex flex-wrap items-center gap-0 mt-1 py-3 border-t border-slate-100">
                   <img
-                    src={stat.img}
-                    alt={stat.label}
-                    className="w-10 h-10 object-contain"
+                    src={`${IMG_ENDPOINT}${currentTab.image_path}`}
+                    alt={currentTab.title}
+                    className="w-8 h-8 object-contain shrink-0 mr-4"
                   />
+                  {services.map((svc, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center text-xs text-[#1a3854] font-medium"
+                    >
+                      {i !== 0 && (
+                        <span className="mx-2 text-slate-300 text-sm leading-none select-none">|</span>
+                      )}
+                      {svc}
+                    </span>
+                  ))}
+                </div> */}
 
-                  <div>
-                    <div className="text-lg md:text-2xl font-bold text-[#293E52]">
-                      {stat.number}
-                    </div>
-                    <div className="text-lg md:text-sm font-medium text-[#293E52]">
-                      {stat.label}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div> */}
-          </div>
-        </motion.div>
-      </AnimatePresence>
-    </div>
+                {/* CTA button */}
+                <div className="mt-2">
+                  <Link
+                    href={`/solutions-details?id=${currentTab.data_uniq_id}`}
+                    className="inline-flex items-center gap-2 rounded-full border border-emerald-600 px-5 py-2.5 text-sm font-semibold text-emerald-700 hover:bg-emerald-600 hover:text-white transition-colors duration-200"
+                  >
+                    Learn More About Our {currentTab.title} Solutions →
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Loading state for tab switch */}
+          {loading && currentTab && (
+            <motion.div
+              key="loading"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10"
+            >
+              <div className="w-full h-[280px] sm:h-[320px] rounded-2xl bg-slate-100 animate-pulse" />
+              <div className="flex flex-col gap-4 pt-4">
+                <div className="h-4 w-32 bg-slate-100 animate-pulse rounded" />
+                <div className="h-8 w-48 bg-slate-100 animate-pulse rounded" />
+                <div className="h-4 w-full bg-slate-100 animate-pulse rounded" />
+                <div className="h-4 w-5/6 bg-slate-100 animate-pulse rounded" />
+                <div className="h-4 w-4/6 bg-slate-100 animate-pulse rounded" />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+      </div>
+    </section>
   );
 }
