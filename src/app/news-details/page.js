@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -26,7 +26,7 @@ function NewsInnerContent() {
   const [news, setNews] = useState(null);
   const [related, setRelated] = useState([]);
 
-  const fetchProject = async () => {
+  const fetchProject = useCallback(async () => {
     try {
       const singleRes = await axiosGet.get(
         `/masters/news/get/?web_sts=1&data_uniq_id=${newsId}`
@@ -114,13 +114,13 @@ function NewsInnerContent() {
     } catch (err) {
       console.error("Error loading news:", err);
     }
-  };
+  }, [newsId]);
 
   useEffect(() => {
     if (newsId) {
       fetchProject();
     }
-  }, [newsId]);
+  }, [fetchProject, newsId]);
 
   if (!news)
     return <p className="p-10 text-center text-[#293E52]">Loading...</p>;

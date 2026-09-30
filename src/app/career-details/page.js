@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
@@ -245,21 +246,21 @@ function JobDetailsContent() {
 
             {job?.salary ? (
           <div className="flex items-center gap-2">
-            <img src="/images/sal.svg" alt="Salary" className="w-4 h-4" />
+            <Image src="/images/sal.svg" alt="Salary" width={16} height={16} className="w-4 h-4" />
             <span className="text-sm text-[#293E52]">{job.salary}</span>
           </div>
         ) : null}
         
             {job.location && (
               <div className="flex items-center gap-2">
-                <img src="/images/loc.svg" alt="Location" className="w-4 h-4" />
+                <Image src="/images/loc.svg" alt="Location" width={16} height={16} className="w-4 h-4" />
                 <span className="text-sm text-[#293E52]">{job.location}</span>
               </div>
             )}
 
             {job.type && (
               <span className="flex items-center gap-2">
-                <img src="/images/work.svg" className="w-4 h-4" />
+                <Image src="/images/work.svg" alt="Job type" width={16} height={16} className="w-4 h-4" />
                 {job.type}
               </span>
             )}
