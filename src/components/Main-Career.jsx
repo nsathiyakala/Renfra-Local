@@ -48,7 +48,7 @@ export default function MainCareerSection() {
   if (loading) {
     return (
       <section className="w-full py-12 px-4">
-        <div className="max-w-7xl mx-auto text-center text-[#293E52] text-lg font-semibold">
+        <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto text-center text-[#293E52] text-lg font-semibold">
           <p className="text-center mb-4 text-[#293E52] max-w-5xl mx-auto text-sm sm:text-sm md:text-base lg:text-base">
           At Renfra Energy, we are committed to building a cleaner, greener
           world through innovative solar, wind, and energy storage projects. If
@@ -70,7 +70,7 @@ export default function MainCareerSection() {
   if (noData) {
     return (
       <section className="w-full py-12 px-4">
-        <div className="max-w-7xl mx-auto text-center text-red-600 text-lg font-semibold">
+        <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto text-center text-red-600 text-lg font-semibold">
           <p className="text-center mb-4 text-[#293E52] max-w-5xl mx-auto text-sm sm:text-sm md:text-base lg:text-base">
           At Renfra Energy, we are committed to building a cleaner, greener
           world through innovative solar, wind, and energy storage projects. If
@@ -91,7 +91,7 @@ export default function MainCareerSection() {
 
   return (
     <section className="w-full py-12 px-4">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto">
         <p className="text-center mb-4 text-[#293E52] max-w-5xl mx-auto text-sm sm:text-sm md:text-base lg:text-base">
           At Renfra Energy, we are committed to building a cleaner, greener
           world through innovative solar, wind, and energy storage projects. If

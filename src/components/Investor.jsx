@@ -1670,7 +1670,7 @@ function CategoryTree({ nodes, depth, onDownload, onVideoPlay }) {
 
   const headerTextSize =
     depth === 0
-      ? "text-sm md:text-base font-bold uppercase tracking-[0.12em]"
+      ? "text-sm md:text-base font-bold  "
       : depth === 1
         ? "text-sm font-bold"
         : "text-xs font-semibold";
@@ -1964,7 +1964,7 @@ function NewInvestorSectionInner() {
         </div>
       )}
 
-      <div className="mx-auto w-full max-w-[1350px] flex-grow px-4 py-6 md:px-8 md:py-10">
+      <div className="mx-auto w-full max-w-[85rem] 2xl:max-w-[90rem] flex-grow px-4 py-6 md:px-8 md:py-10">
         <header className="overflow-hidden rounded-[28px] border border-[#dfece4] bg-white shadow-[0_18px_45px_rgba(15,59,55,0.06)]">
           <div className="border-b border-[#edf2ee] bg-gradient-to-r from-[#eaf6f0] via-white to-[#eef8f5] px-5 py-6 sm:px-7 lg:px-9">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -1972,7 +1972,7 @@ function NewInvestorSectionInner() {
                 <span className="inline-flex items-center rounded-full border border-[#bfe3d1] bg-[#e8f9ef] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.23em] text-[#1f6a57]">
                   Investor Relations
                 </span>
-                <h1 className="mt-4 text-2xl font-black tracking-[-0.04em] text-[#123e4e] sm:text-3xl lg:text-4xl">
+                <h1 className="mt-4 text-2xl font-black tracking-[-0.04em]  text-2xl sm:text-3xl font-bold text-[#1A202C] ">
                   {activeTabData ? activeTabData.title : "Investor Relations"}
                 </h1>
               </div>

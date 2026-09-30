@@ -107,7 +107,7 @@ export default function ExecutiveMessageTabs() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#329ACD] to-[#3AB257] py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Tabs Navigation */}
         <div className="flex gap-4 mb-12 justify-center flex-wrap">
           {tabsData.map((tab) => (

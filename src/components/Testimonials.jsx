@@ -93,7 +93,7 @@ export function TestimonialsSection() {
       className="w-full py-16 px-4 md:px-8 lg:px-16 relative bg-cover bg-center"
       style={{ backgroundImage: "url('/images/test-bg.png')" }}
     >
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative max-w-[85rem] 2xl:max-w-[90rem] mx-auto">
         <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 text-[#293E52]">
           Client Testimonials
         </h2>

@@ -192,7 +192,7 @@ function JobDetailsContent() {
   return (
     <div className="min-h-screen bg-background">
       <div className="bg-white border-b sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 py-4">
           <Link
             href="/career"
             className="inline-flex items-center gap-2 text-[#329ACD]"
@@ -203,7 +203,7 @@ function JobDetailsContent() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 space-y-10">
           <h1 className="text-3xl font-bold text-[#293E52] mb-3">
             {job.title}

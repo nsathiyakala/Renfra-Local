@@ -9,7 +9,7 @@ const LiveProCom = dynamic(() => import("./LiveProCom"), {
 
 export default function InteractiveProSec() {
   return (
-    <section className="mx-auto max-w-7xl px-4 pb-10 md:px-6 lg:px-8">
+    <section className="mx-auto max-w-[85rem] 2xl:max-w-[90rem] px-4 pb-10 md:px-6 lg:px-8">
       <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
         <LiveProCom status="completed" />
         <LiveProCom status="ongoing" />

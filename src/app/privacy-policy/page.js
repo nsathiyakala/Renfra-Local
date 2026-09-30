@@ -5,7 +5,7 @@ import React from "react"
 export default function PrivacyPolicy() {
   return (
     <section className="bg-gray-50 text-gray-800 py-16 px-6 md:px-16 lg:px-32">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 md:px-6 lg:px-8">
         {/* Page Title */}
         <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
           Privacy Policy

@@ -43,7 +43,8 @@ export function ContactInfo() {
     </div>
     <div>
       <h3 className="font-semibold text-[#293E52]">Call Us</h3>
-      <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]">+91 70944 88909</p>
+      <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]"><b>Service : </b>+91 70944 88909</p>
+      <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]"><b>Career : </b>+91 99655 15120</p>
     </div>
   </div>
 

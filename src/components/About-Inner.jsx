@@ -65,7 +65,7 @@ export default function CenterTextVideoSection() {
 
       {/* Video Section */}
 <motion.div
-  className="relative w-full max-w-7xl rounded-2xl overflow-hidden"
+  className="relative w-full max-w-[85rem] 2xl:max-w-[90rem] rounded-2xl overflow-hidden"
   initial={{ opacity: 0, y: 50 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}

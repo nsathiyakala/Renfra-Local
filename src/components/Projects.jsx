@@ -27,132 +27,36 @@ const TABS_DATA = [
         description:
           "Currently executing 500MW of solar PV projects, ensuring optimal design and performance.",
       },
-      {
-        id: "3",
-        image: "/images/solar3.png",
-        title: "650MW Solar PV",
-        status: "Completed",
-        location: "Chennai",
-        description:
-          "Successfully delivered 650MW of solar PV projects, generating clean and sustainable energy.",
-      },
-      {
-        id: "4",
-        image: "/images/solar4.png",
-        title: "500MW Solar PV",
-        status: "Ongoing",
-        location: "Coimbatore",
-        description:
-          "Currently executing 500MW of solar PV projects, ensuring optimal design and performance.",
-      },
-      {
-        id: "5",
-        image: "/images/solar5.png",
-        title: "500MW Solar PV",
-        status: "Completed",
-        location: "Coimbatore",
-        description:
-          "Currently executing 500MW of solar PV projects, ensuring optimal design and performance.",
-      },
-    ],
-  },
-  {
-    id: "wind",
-    label: "Wind",
-    cards: [
-      {
-        id: "3",
-        image: "/images/wind1.png",
-        title: "300MW Wind Farm",
-        status: "Completed",
-        location: "Tamil Nadu",
-        description:
-          "Successfully completed 300MW wind energy project with advanced turbine technology.",
-      },
-      {
-        id: "4",
-        image: "/images/wind2.png",
-        title: "250MW Wind Project",
-        status: "Ongoing",
-        location: "Rajasthan",
-        description:
-          "Currently developing 250MW wind energy project with sustainable practices.",
-      },
-    ],
-  },
-  {
-    id: "commercial-industrial",
-    label: "Commercial & Industrial",
-    cards: [
-      {
-        id: "5",
-        image: "/images/s03.png",
-        title: "150MW Commercial Solar",
-        status: "Completed",
-        location: "Bangalore",
-        description:
-          "Delivered comprehensive commercial solar solutions for industrial facilities.",
-      },
-      {
-        id: "6",
-        image: "/images/s03.png",
-        title: "120MW Industrial Complex",
-        status: "Ongoing",
-        location: "Pune",
-        description:
-          "Implementing integrated energy solutions for large industrial complexes.",
-      },
-    ],
-  },
-  {
-    id: "energy-storage",
-    label: "Energy Storage System",
-    cards: [
-      {
-        id: "7",
-        image: "/images/s04.png",
-        title: "500MWh Storage System",
-        status: "Completed",
-        location: "Gujarat",
-        description:
-          "Deployed advanced battery storage systems for grid stabilization.",
-      },
-      {
-        id: "8",
-        image: "/images/s04.png",
-        title: "300MWh Storage Project",
-        status: "Ongoing",
-        location: "Telangana",
-        description:
-          "Building state-of-the-art energy storage facility for renewable integration.",
-      },
-    ],
-  },
-  {
-    id: "residential",
-    label: "Residential",
-    cards: [
-      {
-        id: "9",
-        image: "/images/s05.png",
-        title: "50MW Residential Solar",
-        status: "Completed",
-        location: "Hyderabad",
-        description:
-          "Installed solar systems for thousands of residential properties.",
-      },
-      {
-        id: "10",
-        image: "/images/s05.png",
-        title: "40MW Residential Project",
-        status: "Ongoing",
-        location: "Delhi",
-        description:
-          "Expanding residential solar adoption with innovative financing solutions.",
-      },
     ],
   },
 ];
+
+const SOUTHERN_ZONE_PHASES = [
+  {
+    title: "Southern Zone 1 \u2014 117 MW Solar Project",
+    description:
+      "This project marked our initial solar project in the Southern Zone, commissioned in 2021. The project has been operating continuously since commissioning, with no major breakdowns or operational issues reported, demonstrating the quality, reliability, and long-term performance of our EPC execution. The project is supported by two 110/33kV - Pooling Substations (PSS), enabling reliable power evacuation and grid connectivity.",
+  },
+  {
+    title: "Southern Zone 2 \u2014 101 MW Solar Project",
+    description:
+      "This project combines large-scale solar generation with Battery Energy Storage System (BESS) integration, delivering a reliable and flexible renewable energy solution. The project was successfully executed through optimized engineering, efficient construction practices, and coordinated project management. Supported by the 110/33kV Pooling Substation (PSS) and integrated BESS infrastructure, the project enables reliable power evacuation, grid connectivity, and enhanced energy management.",
+  },
+];
+
+function getDisplayProjects(projects) {
+  return projects.flatMap((project) => {
+    const title = project.title?.toLowerCase() || "";
+    if (!title.includes("213") || !title.includes("southern zone")) {
+      return [project];
+    }
+    return SOUTHERN_ZONE_PHASES.map((phase, index) => ({
+      ...project,
+      ...phase,
+      data_uniq_id: `${project.data_uniq_id}-southern-zone-${index + 1}`,
+    }));
+  });
+}
 
 export default function ProjectsSection() {
   const [activeTab, setActiveTab] = useState("");
@@ -168,17 +72,26 @@ export default function ProjectsSection() {
       const res = await axiosGet.get(
         `masters/solutions/get/?web_sts=1&order_type=asc&order_field=created_date&get_sts=1`
       );
-
       const data = res.data?.data || [];
-
       if (data.length === 0) {
         setNoData(true);
         setLoading(false);
         return;
       }
-
-      setMasterTitle(data);
-      setActiveTab(data[0].data_uniq_id); // SAFE: only sets if exists
+      const filtered = data.filter(
+        (item) =>
+          !item.title?.toLowerCase().includes("operations") &&
+          !item.title?.toLowerCase().includes("maintenance") &&
+          !item.title?.toLowerCase().includes("o&m") &&
+          !item.title?.toLowerCase().includes("o & m")
+      );
+      if (filtered.length === 0) {
+        setNoData(true);
+        setLoading(false);
+        return;
+      }
+      setMasterTitle(filtered);
+      setActiveTab(filtered[0].data_uniq_id);
     } catch (e) {
       console.error("Master Error:", e);
       setNoData(true);
@@ -189,16 +102,12 @@ export default function ProjectsSection() {
 
   const fetchProject = async () => {
     if (!activeTab) return;
-
     try {
       setLoading(true);
-
       const res = await axiosGet.get(
         `masters/projects/get/?web_sts=1&solution_id=${activeTab}`
       );
-
       const data = res.data?.data || [];
-
       setProjectData(data);
       setNoData(data.length === 0);
     } catch (err) {
@@ -217,9 +126,8 @@ export default function ProjectsSection() {
     fetchProject();
   }, [activeTab]);
 
-  // ------------------------------------
-  // 🔥 LOADING UI (your UI unchanged)
-  // ------------------------------------
+  const displayProjects = getDisplayProjects(projectData);
+
   if (loading) {
     return (
       <section className="w-full px-4 py-12 md:px-6 lg:px-8">
@@ -230,40 +138,40 @@ export default function ProjectsSection() {
     );
   }
 
- 
   if (noData) {
     return (
       <section className="w-full px-4 py-12 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center py-20 text-red-600 font-semibold">
-          <div className="mb-12 text-center">
-          <p className="text-sm text-[#293E52] md:text-base max-w-3xl mx-auto">
+        <div className="mx-auto max-w-7xl text-center py-20">
+          <p className="text-sm text-[#293E52] md:text-base max-w-3xl mx-auto mb-4">
             Renfra Energy delivers large-scale solar, wind, and storage projects
-            across India, powering a cleaner, sustainable future.{" "}
+            across India, powering a cleaner, sustainable future.
           </p>
-        </div>
-          No Data Found
+          <p className="text-red-500 font-semibold">No Data Found</p>
         </div>
       </section>
     );
   }
+
   return (
-    <section className="w-full px-4 py-12 md:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        {/* Heading Section */}
+    <section className="w-full  ">
+      <div className="mx-auto max-w-[85rem] 2xl:max-w-[90rem] px-4 py-14 md:px-6 md:py-16 lg:px-8">
+
+        {/* Header */}
         <div className="mb-12 text-center">
-          <p className="text-sm text-[#293E52] md:text-base max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-sm leading-7 text-[#425263] md:text-base">
             Renfra Energy delivers large-scale solar, wind, and storage projects
-            across India, powering a cleaner, sustainable future.{" "}
+            across India, powering a cleaner, sustainable future.
           </p>
         </div>
 
-        {/* Tabs Section */}
-        <div className="mb-8 flex flex-wrap gap-2 md:gap-4 justify-center">
+        {/* Tabs */}
+        <div className="mb-10 flex flex-wrap justify-center gap-2 border-b border-[#dce6dd] pb-5 md:gap-3">
           {masterTitle.map((tab) => (
             <button
               key={tab.data_uniq_id}
               onClick={() => setActiveTab(tab.data_uniq_id)}
-              className={`
+              aria-pressed={activeTab === tab.data_uniq_id}
+             className={`
         rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 md:px-6 md:py-2.5 cursor-pointer
         ${
           activeTab === tab.data_uniq_id
@@ -277,63 +185,76 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* Grid Cards Section */}
-        {projectData && (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-            {projectData.map((project) => (
-              <div
-                key={project.data_uniq_id}
-                className="overflow-hidden rounded-lg bg-card"
-              >
-                {/* Image */}
-                <div className="relative h-48 w-full overflow-hidden bg-muted md:h-64 rounded-lg">
-                  <img
-                    src={`${BASE_URL}${project.image_path}`}
-                    alt={project.image_name}
-                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105 rounded-lg"
-                  />
-                </div>
+        {/* Mosaic Grid */}
+        {displayProjects.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayProjects.map((project, i) => {
+              // Pattern: 0=big, 1=small, 2=small, 3=big, 4=big, 5=small (repeating)
+              const pattern = [true, false, false, true, true, false];
+              const isBigFeature = pattern[i % 6];
+              const isCompleted = project.project_status === 3;
 
-                {/* Content */}
-                <div className="py-2 px-0">
-                  {/* Title and Status */}
-                  <div className="mb-3 flex items-center justify-between gap-3 mt-4">
-                    <h3 className="text-md sm:text-smdm md:text-lg lg:text-xl font-semibold text-[#293E52] md:text-xl">
+              return (
+                <div
+                  key={project.data_uniq_id}
+                  className={`group flex flex-col rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 ${
+                    isBigFeature ? "sm:col-span-2" : ""
+                  }`}
+                >
+                  {/* Image half */}
+                  <div
+                    className={`relative overflow-hidden flex-shrink-0 ${
+                      isBigFeature ? "h-72 sm:h-80" : "h-56"
+                    }`}
+                  >
+                    <img
+                      src={`${BASE_URL}${project.image_path}`}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                    <div className="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute top-0 right-0 w-0 h-0 border-t-[44px] border-r-[44px] border-t-transparent border-r-[#3CA948]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                      <span
+                        className={`w-2 h-2 rounded-full ${
+                          isCompleted ? "bg-[#3CA948]" : "bg-[#329ACD]"
+                        }`}
+                      />
+                      <span className="text-white/90 text-[10px] font-bold uppercase tracking-widest">
+                        {isCompleted ? "Completed" : "Ongoing"}
+                      </span>
+                    </div>
+                    {project.location && (
+                      <div className="absolute bottom-3 left-4 flex items-center gap-1">
+                        <MapPin className="w-3 h-3 text-[#3CA948] flex-shrink-0" />
+                        <span className="text-[#3CA948] text-[11px] font-semibold uppercase tracking-wider">
+                          {project.location}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Content half — full description, no clamp */}
+                  <div className="flex flex-col flex-1 p-5 sm:p-6">
+                    <h3
+                      className={`font-bold text-[#293E52] leading-snug mb-3 ${
+                        isBigFeature ? "text-lg sm:text-xl" : "text-base sm:text-lg"
+                      }`}
+                    >
                       {project.title}
                     </h3>
                     <div
-                      className={`inline-block rounded-full p-[1.5px] ${
-                        project.project_status === 3
-                          ? "bg-gradient-to-r from-[#3AB257] to-[#329ACD]"
-                          : "bg-gradient-to-r from-[#293E52] to-[#293E52]"
-                      }`}
-                    >
-                      <span className="block whitespace-nowrap rounded-full bg-white px-3 py-1 text-xs font-medium text-[#293E52]">
-                        {project.project_status === 3 ? "Completed" : "Ongoing"}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Location */}
-                  <div className="mb-3 flex items-center gap-2 text-sm font-bold text-[#3CA948]">
-                    <img
-                      src="/images/con-loc.png"
-                      alt="Location"
-                      className="h-4 w-4"
+                      className="text-sm text-gray-500 leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: project.description }}
                     />
-                    <span>{project.location}</span>
                   </div>
-
-                  {/* Description */}
-                  <p
-                    className="text-sm sm:text-sm md:text-base lg:text-base text-[#293E52] md:text-base"
-                    dangerouslySetInnerHTML={{ __html: project.description }}
-                  />
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
+
       </div>
     </section>
   );

@@ -100,7 +100,7 @@
 //           className="absolute top-1 left-0 w-full hidden lg:block -translate-y-full"
 //         />
 
-//         <div className="max-w-7xl mx-auto px-6 relative z-10">
+//         <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-6 relative z-10">
 //           {/* Main footer content */}
 //           <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 gap-6 mb-2">
 //             {/* Left Section - Logo and Social */}
@@ -390,7 +390,15 @@ export default function Footer() {
         const response = await axiosGet.get(
           "masters/solutions/get/?web_sts=1&active_status=1&order_type=asc&order_field=created_date"
         )
-        setSolutions(response.data.data || [])
+        setSolutions(
+          (response.data.data || []).filter(
+            (item) =>
+              !item.title?.toLowerCase().includes("operations") &&
+              !item.title?.toLowerCase().includes("maintenance") &&
+              !item.title?.toLowerCase().includes("o&m") &&
+              !item.title?.toLowerCase().includes("o & m")
+          )
+        )
       } catch (error) {
         console.error("Footer Solutions Error:", error)
       }
@@ -470,7 +478,7 @@ export default function Footer() {
           className="absolute top-1 left-0 w-full hidden lg:block -translate-y-full"
         />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-6 relative z-10">
           {/* Main footer content */}
           <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 gap-6 mb-2">
             {/* Left Section - Logo and Social */}
@@ -585,7 +593,10 @@ export default function Footer() {
                   <div>
                     <p className="text-white text-sm font-medium">Call Us</p>
                     <a href="tel:+917094488909" className="text-gray-400 text-sm ">
-                      +91 70944 88909
+                      Service: +91 70944 88909
+                    </a>{" "} <br />
+                    <a href="tel:+919965515120" className="text-gray-400 text-sm ">
+                      Career: +91 99655 15120
                     </a>{" "}
                   </div>
                 </div>

@@ -164,7 +164,7 @@ export default function CareerSection() {
  
   return (
     <section className="w-full py-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 md:px-6 lg:px-8">
         {/* Title Section */}
         <div className="flex items-center justify-center mb-4 gap-2">
           <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#293E52]">

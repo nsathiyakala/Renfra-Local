@@ -62,7 +62,7 @@ export default function SolutionsSection() {
 
   return (
     <section className="w-full bg-gradient-to-b from-[#329ACD] to-[#3AB257] py-12 md:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[85rem] 2xl:max-w-[90rem] px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="mb-12 md:mb-16 text-center">
           <div className="flex items-center gap-3 mb-4">

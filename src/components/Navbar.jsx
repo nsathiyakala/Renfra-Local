@@ -129,7 +129,7 @@
 
 //   return (
 //     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//       <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
 //         <div className="flex justify-between items-center h-20">
 
 //           {/* Logo */}
@@ -431,7 +431,15 @@ function NavbarContent() {
           "masters/solutions/get/?web_sts=1&active_status=1&order_type=asc&order_field=created_date"
         );
         console.log("[v0] Solutions Response:", response.data);
-        setSolutions(response.data?.data || []);
+        setSolutions(
+          (response.data?.data || []).filter(
+            (item) =>
+              !item.title?.toLowerCase().includes("operations") &&
+              !item.title?.toLowerCase().includes("maintenance") &&
+              !item.title?.toLowerCase().includes("o&m") &&
+              !item.title?.toLowerCase().includes("o & m")
+          )
+        );
       } catch (error) {
         console.error("Navbar Solutions Error:", error);
         setSolutions([]);
@@ -468,7 +476,11 @@ function NavbarContent() {
   /* ---------------- Navigation ---------------- */
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
+    {
+      label: "About Us",
+      href: "/about",
+      children: [{ title: "Clients", href: "/clients" }],
+    },
     {
       label: "Our Solutions",
       href: "/solutions",
@@ -479,6 +491,7 @@ function NavbarContent() {
       children: investorRelations,
     },
     { label: "Projects", href: "/projects" },
+    { label: "O & M", href: "/operations-maintenance" },
     { label: "IMS @ Renfra", href: "/ims@renfra" },
     { label: "News & Media", href: "/news" },
     { label: "Career", href: "/career" },
@@ -503,6 +516,8 @@ function NavbarContent() {
     return pathname === "/investor-relations";
   };
 
+  const isAboutActive = () => pathname === "/about" || pathname === "/clients";
+
   const [openMobileMenu, setOpenMobileMenu] = useState(null);
 
   const toggleMobileMenu = (label) => {
@@ -511,7 +526,7 @@ function NavbarContent() {
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
 
           {/* Logo */}
@@ -580,6 +595,49 @@ function NavbarContent() {
                           No solutions available
                         </div>
                       )}
+                    </div>
+                  </div>
+                );
+              }
+
+              if (item.label === "About Us") {
+                return (
+                  <div key={item.label} className="relative group">
+                    <div className="flex items-center gap-1 cursor-pointer font-bold text-[#293E52]">
+                      <Link
+                        href={item.href}
+                        className={`text-sm ${
+                          isAboutActive()
+                            ? "bg-gradient-to-r from-[#3AB257] to-[#329ACD] bg-clip-text text-transparent"
+                            : "hover:text-teal-600"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                      <svg
+                        className="w-4 h-4 transition-transform group-hover:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                    <div className="absolute top-full left-0 mt-3 w-48 bg-white shadow-lg rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="block px-5 py-3 text-sm text-[#293E52] hover:bg-gray-100 rounded-xl"
+                        >
+                          {child.title}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 );
@@ -755,7 +813,18 @@ function NavbarContent() {
                               {child.title}
                             </Link>
                           ))
-                        : item.children.map((child) => (
+                        : item.label === "About Us"
+                          ? item.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                onClick={() => setIsOpen(false)}
+                                className="text-base text-[#293E52]"
+                              >
+                                {child.title}
+                              </Link>
+                            ))
+                          : item.children.map((child) => (
                             <Link
                               key={child.data_uniq_id}
                               href={`/investor-relations?tab=${child.data_uniq_id}`}

@@ -49,7 +49,7 @@ export default function CommitmentSection() {
       className="pt-16 px-4 bg-cover bg-center pb-10"
       style={{ backgroundImage: "url('/images/commit-bg.png')" }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#293E52] mb-4">

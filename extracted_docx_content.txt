@@ -1,0 +1,241 @@
+﻿WEBSITE CONTENT
+1. PROPOSED WEBSITE POSITIONING STATEMENT
+Powering Performance. Protecting Assets. Delivering Reliability.
+Renfra Energy delivers integrated Renewable Energy Operations &amp; Maintenance (O&amp;M), Asset Management, Inspection, Testing and Specialized Technical Services.
+With an operational portfolio of 432.9 MW AC / 553.5 MW DC across 24 sites in Tamil Nadu, our experienced site teams and technical professionals combine field expertise, advanced inspection technologies, electrical testing, performance analytics and specialized repair capabilities to support renewable energy assets throughout their operational lifecycle.
+Our capabilities combine in-house technical expertise with specialized third-party testing services, providing comprehensive support focused on plant availability, performance optimization, equipment reliability and long-term asset health.
+Our operational infrastructure includes 4 × 110/33 kV Power Substations (PSS) supporting the portfolio's electrical evacuation and grid-interface requirements.
+2. O&amp;M PORTFOLIO
+2.1 Operations &amp; Maintenance
+Renfra Energy provides comprehensive Operations &amp; Maintenance (O&amp;M) and Asset Management Services for utility-scale solar assets, with a focus on maximizing plant availability, optimizing generation, maintaining equipment reliability and extending asset life.
+Our key O&amp;M activities include:
+Preventive and corrective maintenance 
+Electrical equipment inspection and maintenance 
+Plant performance monitoring and analysis 
+Breakdown analysis and troubleshooting 
+Inverter and transformer maintenance 
+HT/LT system maintenance 
+Substation and evacuation-system maintenance 
+SCADA and communication-system monitoring 
+Equipment condition assessment 
+Shutdown planning and maintenance coordination 
+Generation and performance analysis 
+Safety and statutory compliance management 
+Reliability improvement and predictive maintenance 
+3. OPERATIONAL PORTFOLIO
+3.1 Portfolio Management
+Renfra Energy currently manages an operational solar portfolio of approximately 432.9 MW AC / 553.5 MW DC across multiple project locations in Tamil Nadu.
+Our asset management approach focuses on:
+Maximizing plant availability 
+Optimizing energy generation 
+Monitoring equipment health 
+Reducing unplanned downtime 
+Implementing preventive and predictive maintenance strategies 
+Identifying performance deviations 
+Improving equipment reliability 
+Supporting long-term asset performance 
+Ensuring effective grid and evacuation-system management 
+Key Portfolio Highlights
+Particular
+Current Portfolio
+Operational Solar Capacity – AC
+432.9 MW
+Operational Solar Capacity – DC
+553.5 MW
+Operational Sites
+24 Sites
+Primary Region
+Tamil Nadu
+Power Substations
+4 × 110/33 kV PSS
+O&amp;M Scope
+Solar Plant Operations &amp; Maintenance
+Testing Capability
+In-House &amp; Specialized Third-Party
+Advanced Inspection
+Drone Thermography &amp; Visual Inspection
+4. SITE PRESENCE
+4.1 24 Operational Sites Across Tamil Nadu
+Our presence across 24 operational sites enables strong local technical support, faster response and effective coordination with customers, OEMs, testing agencies and grid authorities.
+Our site teams support:
+Daily plant operations 
+Preventive maintenance 
+Corrective maintenance 
+Breakdown response 
+Equipment inspection 
+Testing and diagnostic activities 
+Shutdown execution 
+Grid coordination 
+Safety implementation 
+Technical reporting 
+Performance monitoring 
+Emergency response and restoration 
+Our distributed site presence, supported by centralized technical management, enables efficient field execution and timely resolution of operational issues.
+5. TEAM &amp; ORGANIZATIONAL CAPABILITY
+5.1 Core Management &amp; Technical Team
+Our central management and technical team comprises experienced professionals with expertise in:
+Renewable energy asset management 
+Electrical engineering 
+O&amp;M planning and execution 
+Performance analysis 
+Technical troubleshooting 
+Reliability improvement 
+Customer coordination 
+OEM and vendor coordination 
+Project management 
+Technical documentation and reporting 
+The central team provides technical direction, planning, performance monitoring, engineering support and operational coordination to site-level teams.
+5.2 Site Engineering &amp; Technical Teams
+Our site teams comprise experienced engineers, technicians and operational personnel responsible for:
+Plant operation 
+Preventive maintenance 
+Corrective and breakdown maintenance 
+Equipment inspection 
+Troubleshooting 
+Testing coordination 
+Safety compliance 
+Grid coordination 
+Equipment health monitoring 
+Daily operational reporting 
+6. CORE O&amp;M ACTIVITIES
+6.1 Preventive Maintenance
+Routine inspections and planned maintenance activities are carried out to identify potential failures at an early stage and maintain equipment reliability.
+Major activities include:
+Electrical system inspection 
+PV module and structure inspection 
+Inverter inspection and maintenance 
+Transformer inspection and maintenance 
+HT/LT panel inspection 
+Cable and termination inspection 
+Protection-system inspection 
+Equipment condition monitoring 
+Preventive component replacement 
+Thermal inspection of electrical connections and equipment 
+6.2 Corrective &amp; Breakdown Maintenance
+Our technical teams provide structured breakdown response and troubleshooting to restore equipment and plant availability.
+Maintenance methodology:
+Fault Identification → Diagnosis → Root Cause Analysis → Rectification → Testing → Restoration → Performance Verification
+This structured approach helps minimize downtime and ensure reliable restoration of affected equipment.
+6.3 Performance Monitoring &amp; Analytics
+Continuous monitoring and analysis of plant operating parameters are carried out to identify generation losses, equipment abnormalities and performance deviations.
+Key monitoring areas include:
+Plant generation 
+Inverter performance 
+String performance 
+Equipment availability 
+Performance Ratio (PR) 
+Irradiance and environmental parameters 
+Alarm analysis 
+Communication status 
+Energy yield 
+Generation loss analysis 
+Equipment performance trends 
+7. SPECIALIZED INSPECTION &amp; DIAGNOSTIC SERVICES
+7.1 Drone Thermography &amp; Visual Inspection
+Renfra Energy utilizes advanced drone-based thermal imaging and visual inspection technology for efficient and comprehensive inspection of large-scale solar assets.
+Our drone thermography capability enables rapid identification and mapping of thermal and visual anomalies across solar PV installations while minimizing inspection time and manual intervention.
+The inspection process supports identification of:
+Module hotspots 
+Abnormal thermal patterns 
+Module defects 
+String-level abnormalities 
+Junction-box abnormalities 
+Bypass diode-related issues 
+Physical module damage 
+Visible module defects 
+Structural abnormalities 
+Other thermal and visual anomalies 
+Inspection findings are analyzed and documented to support defect identification, prioritization of corrective actions and overall asset performance improvement.
+8. IV CURVE TESTING
+PV Module &amp; String Performance Assessment
+IV Curve Testing is used to assess the electrical characteristics and performance of PV modules and strings and to identify abnormal operating conditions.
+The testing supports identification of:
+Underperforming strings 
+Current/voltage deviations 
+Mismatch conditions 
+Module degradation 
+High-resistance conditions 
+Open-circuit conditions 
+String-level abnormalities 
+Performance deviations 
+Renfra Energy utilizes a combination of in-house technical resources and specialized third-party testing agencies, depending on project requirements, testing scope and customer requirements.
+9. ELECTRICAL EQUIPMENT TESTING &amp; HEALTH ASSESSMENT
+Renfra Energy undertakes comprehensive inspection, testing and health assessment of critical electrical equipment through a combination of in-house technical capabilities and specialized third-party testing agencies.
+Testing and assessment may include:
+Power transformers 
+HT/LT panels 
+ACBs 
+MCCBs 
+VCBs 
+Protection relays 
+CTs 
+PTs 
+Switchgear 
+Power and control cables 
+Earthing systems 
+Control circuits 
+Auxiliary systems 
+Substation equipment 
+PSS equipment 
+Experience
+450 MW of equipment testing and health assessment activities completed by our team, covering critical electrical equipment across renewable energy assets.
+This includes equipment health assessment and verification associated with 4 × 110/33 kV Power Substations (PSS), as applicable to the project scope.
+10. RELAY &amp; PROTECTION SYSTEM TESTING
+Our dedicated technical team supports inspection, testing and verification of electrical protection and control systems.
+Key activities include:
+Protection relay testing 
+Functional verification 
+Trip circuit verification 
+Breaker trip/close verification 
+Interlock verification 
+Protection parameter verification 
+Control circuit verification 
+Equipment diagnostic testing 
+Test report preparation 
+Testing activities are carried out using in-house capabilities and specialized third-party testing agencies, depending on project requirements and test scope.
+11. MICRO-PCB REPAIR &amp; ELECTRONIC SERVICES
+Renfra Energy has specialized technical capability for micro-PCB inspection, component-level troubleshooting and soldering support for selected electronic and control-system equipment.
+Services include:
+PCB inspection 
+Component-level diagnosis 
+Micro soldering 
+Connector repair 
+Component replacement 
+Track and connection repair 
+Board-level troubleshooting 
+Functional verification 
+This capability supports the repair and restoration of serviceable electronic components, helping reduce equipment downtime and potentially minimize complete-board replacement where technically feasible.
+12. IN-HOUSE &amp; THIRD-PARTY TESTING CAPABILITY
+Renfra Energy follows an integrated in-house and third-party testing model, enabling the appropriate technical resources to be deployed based on equipment criticality, project requirements and testing scope.
+Testing Approach
+In-House Inspection &amp; DiagnosticsAdvanced / Specialized TestingThird-Party Testing Where RequiredTechnical Analysis &amp; AssessmentCorrective Action RecommendationPost-Rectification Verification
+This approach provides flexibility to undertake routine inspections, advanced diagnostics and specialized testing while supporting customer-specific and statutory requirements.
+13. KEY EXPERIENCE SUMMARY
+Area
+Experience / Capability
+Operational Solar Portfolio – AC
+432.9 MW
+Operational Solar Portfolio – DC
+553.5 MW
+Operational Sites
+24 Sites
+Power Substations
+4 × 110/33 kV PSS
+Advanced Inspection
+Drone Thermography &amp; Visual Inspection
+Equipment Testing &amp; Health Assessment
+450 MW
+Testing Model
+In-House + Specialized Third-Party
+O&amp;M Coverage
+Preventive, Corrective &amp; Predictive Maintenance
+Specialized Services
+PCB Repair, Relay Testing, IV Curve Testing &amp; Drone Thermography
+14. WEBSITE HIGHLIGHTS
+432.9 MW ACOperational Solar Portfolio
+553.5 MW DCInstalled Solar Capacity
+24 SitesOperational Presence Across Tamil Nadu
+4 × 110/33 kVPower Substations
+Drone ThermographyAdvanced Solar Asset Inspection
+450 MWEquipment Testing &amp; Health Assessment
+In-House + Third-PartyTesting &amp; Diagnostic Capability

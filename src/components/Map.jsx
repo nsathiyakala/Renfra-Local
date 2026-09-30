@@ -9,7 +9,7 @@ Renewable Reach
       </h2>
 
       {/* Map Image */}
-      <div className="w-full max-w-7xl flex justify-center">
+      <div className="w-full max-w-[85rem] 2xl:max-w-[90rem] flex justify-center">
         <img
           src="/images/map.png" // Replace with your map image path
           alt="Location Map"

@@ -84,13 +84,13 @@ export default function InnerBanner({ title, bgImage }) {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#193F3D]"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10">
+      <div className="relative z-10 max-w-[85rem] 2xl:max-w-[90rem] mx-auto w-full px-6 md:px-10">
         <div className="text-white space-y-3">
           {/* Title */}
           <h1 className="text-3xl md:text-5xl font-normal">{title || "Page Title"}</h1>
 
           {/* Divider line */}
-          <div className="max-w-7xl h-[1px] bg-white/70"></div>
+          <div className="max-w-[85rem] 2xl:max-w-[90rem] h-[1px] bg-white/70"></div>
 
           {/* Breadcrumb */}
           <div className="text-sm md:text-base text-gray-200">

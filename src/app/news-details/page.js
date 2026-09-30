@@ -126,7 +126,7 @@ function NewsInnerContent() {
     return <p className="p-10 text-center text-[#293E52]">Loading...</p>;
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+    <main className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 pt-12">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-[#293E52]">
@@ -202,7 +202,7 @@ function NewsInnerContent() {
 
         {/* Go Back to Solutions Page */}
         <div className="bg-white">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="w-full max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <Link
             href="/news"
             className="inline-flex items-center gap-2 text-[#293E52] hover:text-[#3CA948] font-semibold transition-colors"

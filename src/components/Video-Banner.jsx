@@ -85,7 +85,7 @@ const toggleItem = (label) => {
     <div className="relative w-full h-screen overflow-hidden bg-gray-900">
       {/* Background GIF */}
       <video
-  src="/images/Renfra Banner Video.mp4" // replace with your actual video path
+  src="/images/Renfra-Energy-video.mp4" // replace with your actual video path
   autoPlay
   loop
   muted
@@ -98,7 +98,7 @@ const toggleItem = (label) => {
 
       {/* Foreground Content */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="w-full md:w-1/2 lg:w-6/12">
             <div className="relative h-18 sm:h-18 md:h-10 lg:h-38 overflow-hidden mb-2">
               <h1
