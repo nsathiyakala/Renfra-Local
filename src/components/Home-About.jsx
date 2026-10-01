@@ -293,12 +293,12 @@ export default function AboutUsSection() {
 
         {/* Stats Grid */}
         <div className="border border-border rounded-lg overflow-hidden mt-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
             {statusCard.map((stat, index) => (
               <motion.div
                 key={index}
                 className={`
-                  flex flex-col items-center justify-center gap-5 p-8 bg-card
+                  flex flex-col items-center justify-center gap-5 p-5 lg:p-8 bg-card
                   ${index % 4 !== 3 ? "sm:border-r border-border" : ""}
                   ${index < statusCard.length - 4 ? "border-b border-border" : ""}
                 `}
