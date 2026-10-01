@@ -180,7 +180,7 @@ export default function RenfraSolutionNew() {
                       <span className="h-px w-8 bg-[#a9e6b4]" />
                       0{index + 1} / Renewable Solutions
                     </p> */}
-                    <h3 className="mb-4 max-w-[18ch] text-3xl font-bold leading-tight text-white sm:text-2xl md:text-3xl">
+                    <h3 className="mb-4 max-w-[18ch] text-2xl lg:text-3xl font-bold leading-tight text-white sm:text-2xl md:text-3xl">
                       {card.title}
                     </h3>
                     <p className="max-w-xl text-sm leading-7 text-white/90 text-sm sm:text-sm md:text-base lg:text-base">
