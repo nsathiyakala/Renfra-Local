@@ -269,7 +269,7 @@ export default function ProjectsSection() {
                   {/* Content half — full description, no clamp */}
                   <div className="flex flex-col flex-1 p-5 sm:p-6">
                     <h3
-                      className={`font-bold text-[#293E52] leading-snug mb-3 ${
+                      className={`font-bold text-[#000] leading-snug mb-3 ${
                         isBigFeature ? "text-lg sm:text-xl" : "text-base sm:text-lg"
                       }`}
                     >
@@ -303,7 +303,7 @@ export default function ProjectsSection() {
                       </div>
                     )}
                     <div
-                      className="text-sm text-gray-500 leading-relaxed"
+                      className="text-sm text-gray-800 leading-relaxed"
                       dangerouslySetInnerHTML={{ __html: project.description }}
                     />
                   </div>
