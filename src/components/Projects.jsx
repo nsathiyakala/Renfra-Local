@@ -65,6 +65,7 @@ export default function ProjectsSection() {
   console.log(activeTab, "activeTab");
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
+  const [ready, setReady] = useState(false);
 
   const fetchMaster = async () => {
     try {
@@ -103,6 +104,7 @@ export default function ProjectsSection() {
   const fetchProject = async () => {
     if (!activeTab) return;
     try {
+      setReady(false);
       setLoading(true);
       const res = await axiosGet.get(
         `masters/projects/get/?web_sts=1&solution_id=${activeTab}`
@@ -110,6 +112,7 @@ export default function ProjectsSection() {
       const data = res.data?.data || [];
       setProjectData(data);
       setNoData(data.length === 0);
+      setTimeout(() => setReady(true), 50);
     } catch (err) {
       console.error("Project Error:", err);
       setNoData(true);
@@ -187,7 +190,9 @@ export default function ProjectsSection() {
 
         {/* Mosaic Grid */}
         {displayProjects.length > 0 && (
-          <div className={`${
+          <div className={`transition-all duration-1000 ease-out ${
+            ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          } ${
             displayProjects.length === 1
               ? "flex justify-center"
               : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
