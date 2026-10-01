@@ -8,7 +8,7 @@ export default function ClientLogosGrid({ limit, showViewAll = false }) {
   const logos = limit ? clientLogos.slice(0, limit) : clientLogos;
 
   return (
-    <section className="relative w-full py-16 bg-white overflow-hidden">
+    <section className="relative w-full py-16 pb-20 bg-white overflow-hidden">
       {/* Top border accent */}
       <div className="absolute top-0 left-0 right-0 h-[3px]" />
 

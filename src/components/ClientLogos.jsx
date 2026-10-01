@@ -33,18 +33,20 @@ export default function ClientLogos() {
 
       {/* Slider track */}
       <div className="w-full overflow-hidden">
-        <div className="flex gap-6 slider-track">
+        <div className="flex slider-track" style={{ gap: "var(--logo-gap)" }}>
           {track.map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-44 h-24 bg-white border border-slate-100 rounded-2xl shadow-sm flex items-center justify-center px-2 hover:shadow-md hover:border-emerald-200 transition-shadow duration-300"
+              className="flex-shrink-0 bg-white border border-slate-100 rounded-2xl shadow-sm flex items-center justify-center hover:shadow-md hover:border-emerald-200 transition-shadow duration-300"
+              style={{ width: "var(--logo-w)", height: "var(--logo-h)", padding: "0 var(--logo-px)" }}
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 width={130}
                 height={60}
-                className="object-contain max-h-14 w-auto"
+                className="object-contain w-auto"
+                style={{ maxHeight: "var(--logo-img-h)" }}
               />
             </div>
           ))}
@@ -57,15 +59,68 @@ export default function ClientLogos() {
           className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#3AB257] to-[#329ACD] px-7 py-3 text-sm font-bold text-white shadow-lg shadow-[#3AB257]/30 transition-all duration-200 hover:scale-105 hover:opacity-90"
         >
           View all clients
-          {/* <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 transition-colors group-hover:bg-white/30">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </span> */}
         </Link>
       </div>
 
       <style jsx>{`
+        /* mobile: 2 logos visible */
+        :root, .slider-track {
+          --logo-w: calc((100vw - 48px) / 4);
+          --logo-h: 60px;
+          --logo-gap: 12px;
+          --logo-px: 12px;
+          --logo-img-h: 50px;
+        }
+        /* sm ≥640px: 3 logos */
+        @media (min-width: 640px) {
+          :root, .slider-track {
+            --logo-w: calc((100vw - 60px) / 3);
+            --logo-h: 88px;
+            --logo-gap: 16px;
+            --logo-px: 14px;
+            --logo-img-h: 44px;
+          }
+        }
+        /* md ≥768px: 4 logos */
+        @media (min-width: 768px) {
+          :root, .slider-track {
+            --logo-w: calc((100vw - 72px) / 6);
+            --logo-h: 92px;
+            --logo-gap: 18px;
+            --logo-px: 16px;
+            --logo-img-h: 48px;
+          }
+        }
+        /* lg ≥1024px: 5 logos */
+        @media (min-width: 1024px) {
+          :root, .slider-track {
+            --logo-w: calc((100vw - 96px) / 6);
+            --logo-h: 96px;
+            --logo-gap: 20px;
+            --logo-px: 20px;
+            --logo-img-h: 52px;
+          }
+        }
+        /* xl ≥1280px: 6 logos */
+        @media (min-width: 1280px) {
+          :root, .slider-track {
+            --logo-w: calc((100vw - 120px) / 9);
+            --logo-h: 96px;
+            --logo-gap: 20px;
+            --logo-px: 24px;
+            --logo-img-h: 52px;
+          }
+        }
+        /* 2xl ≥1536px: 7 logos */
+        @media (min-width: 1536px) {
+          :root, .slider-track {
+            --logo-w: calc((100vw - 144px) / 9);
+            --logo-h: 100px;
+            --logo-gap: 20px;
+            --logo-px: 24px;
+            --logo-img-h: 56px;
+          }
+        }
         .slider-track {
           width: max-content;
           animation: slide 30s linear infinite;

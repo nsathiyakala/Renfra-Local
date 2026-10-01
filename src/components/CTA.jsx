@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export default function CTA() {
   return (
-    <section className="w-[90%] mx-auto mt-16 mb-70">
+    <section className="w-[90%] mx-auto mt-6 mb-10 md:mt-16 md:mb-70">
       <div className="relative rounded-3xl overflow-hidden min-h-[320px] flex items-center">
 
         {/* Background image */}
@@ -61,7 +61,7 @@ export default function CTA() {
               </span>
             </Link>
 
-            <p className="text-slate-400 text-xs">No commitment. Free consultation.</p>
+            <p className="text-white text-xs">No commitment. Free consultation.</p>
           </div>
 
         </div>

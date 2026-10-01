@@ -1177,7 +1177,7 @@ export default function OM2Page() {
     <div className="max-w-[85rem] 2xl:max-w-[100rem] mx-auto  min-h-screen">
 
       {/* ── Mobile top bar ── */}
-      <div className="lg:hidden flex items-center justify-between bg-white border-b border-slate-200 px-4 py-3 sticky top-0 z-30 shadow-sm">
+      <div className="lg:hidden flex items-center justify-between bg-white border-b border-slate-200 px-4 py-3 sticky top-20 z-30 shadow-sm">
         <span className="text-xs font-bold text-[#293E52] truncate max-w-[230px] leading-snug">{activeLabel}</span>
         <button
           onClick={() => setMobileSidebarOpen(true)}

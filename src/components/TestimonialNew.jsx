@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react"; // useEffect kept for auto-slider
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -73,6 +73,29 @@ const testimonials = [
   },
   {
     "id": 3,
+    "company_name": "Geetha Krishna Spinning Mills",
+    "designation": "Mr. M. Kanniah, Electrical Engineer",
+    "date": "09.12.2025",
+    "is_verified": true,
+    "feedback": "The outcome of our strategic project in Moolakarai has been excellent. The project was delivered on time in high quality and the efficiency of the plant has been put in optimum use without any issues. We have also seen a substantial savings from the project.",
+    "overall_satisfaction": 92,
+    "ratings": [
+      {
+        "label": "Employee response",
+        "value": 100
+      },
+      {
+        "label": "Quality of work",
+        "value": 90
+      },
+      {
+        "label": "Communication",
+        "value": 100
+      }
+    ]
+  },
+   {
+    "id": 4,
     "company_name": "Geetha Krishna Spinning Mills",
     "designation": "Mr. M. Kanniah, Electrical Engineer",
     "date": "09.12.2025",
@@ -232,6 +255,7 @@ function CircularProgress({ value = 0, size = 52 }) {
 
 function TestimonialCard({ testimonial, position }) {
   const isCenter = position === "center";
+  const feedbackRef = useRef(null);
 
   const companyName =
     testimonial.company_name ||
@@ -243,6 +267,23 @@ function TestimonialCard({ testimonial, position }) {
 
   const feedback =
     testimonial.feedback || "";
+
+  useLayoutEffect(() => {
+    const feedbackElement = feedbackRef.current;
+
+    if (!feedbackElement) {
+      return;
+    }
+
+    const lineHeight = Number.parseFloat(
+      window.getComputedStyle(feedbackElement).lineHeight,
+    );
+    const collapsedHeight = lineHeight * 4;
+
+    feedbackElement.style.maxHeight = isCenter
+      ? `${feedbackElement.scrollHeight}px`
+      : `${collapsedHeight}px`;
+  }, [feedback, isCenter]);
 
   const logoPath =
     testimonial.logo_path ||
@@ -592,14 +633,18 @@ function TestimonialCard({ testimonial, position }) {
         />
 
         <div
-          className="
+          ref={feedbackRef}
+          className={`
             pl-6
             text-[12px]
             sm:text-[14px]
             text-slate-600
             leading-relaxed
-            line-clamp-4
-          "
+            overflow-hidden
+            transition-[max-height]
+            duration-[650ms]
+            ease-[cubic-bezier(0.4,0,0.2,1)]
+          `}
           dangerouslySetInnerHTML={{
             __html: feedback,
           }}
@@ -783,14 +828,7 @@ export function TestimonialsNew() {
       setInterval(() => {
 
         setCenterIdx((prev) => {
-
-          return (
-            prev + 1 >=
-            testimonials.length
-              ? 0
-              : prev + 1
-          );
-
+          return prev + 1 >= testimonials.length ? 0 : prev + 1;
         });
 
       }, 5000);
@@ -1027,7 +1065,7 @@ export function TestimonialsNew() {
             text-2xl
             sm:text-3xl
             lg:text-[38px]
-            font-extrabold
+            font-semibold
             leading-tight
             text-white
           "
@@ -1124,6 +1162,8 @@ export function TestimonialsNew() {
     */}
     <div
       className="
+        hidden
+        md:block
         invisible
         w-full
         md:w-1/2
@@ -1177,7 +1217,7 @@ export function TestimonialsNew() {
             left = "0%";
 
             transform =
-              "translateX(0) translateY(18px) scale(0.86)";
+              "translateX(0) translateY(-50%) scale(0.86)";
 
             opacity = 0.72;
             zIndex = 10;
@@ -1189,7 +1229,7 @@ export function TestimonialsNew() {
             left = "75%";
 
             transform =
-              "translateX(0) translateY(18px) scale(0.86)";
+              "translateX(0) translateY(-50%) scale(0.86)";
 
             opacity = 0.72;
             zIndex = 10;
@@ -1201,7 +1241,7 @@ export function TestimonialsNew() {
             left = "-25%";
 
             transform =
-              "translateX(0) translateY(18px) scale(0.86)";
+              "translateX(0) translateY(-50%) scale(0.86)";
 
             opacity = 0;
             zIndex = 1;
@@ -1212,7 +1252,7 @@ export function TestimonialsNew() {
             left = "100%";
 
             transform =
-              "translateX(0) translateY(18px) scale(0.86)";
+              "translateX(0) translateY(-50%) scale(0.86)";
 
             opacity = 0;
             zIndex = 1;
@@ -1226,7 +1266,7 @@ export function TestimonialsNew() {
               }
               className={`
                 absolute
-                top-0
+                ${position === 0 ? "top-0" : "top-1/2"}
                 px-2
                 transition-all
                 duration-[650ms]
@@ -1244,11 +1284,7 @@ export function TestimonialsNew() {
             >
               <TestimonialCard
                 testimonial={testimonial}
-                position={
-                  position === 0
-                    ? "center"
-                    : "side"
-                }
+                position={position === 0 ? "center" : "side"}
               />
             </div>
           );
