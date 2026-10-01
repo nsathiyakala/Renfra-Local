@@ -27,94 +27,100 @@ import {
 const testimonials = [
   {
     "id": 1,
-    "company_name": "VPN Textiles",
-    "designation": "Mr. Premanand, Partner",
-    "date": "09.12.2025",
+    "company_name": "Aachi Masala Foods Pvt Ltd",
+    "designation": "",
+    "date": "",
     "is_verified": true,
-    "feedback": "Kudos to the Renfra team for all their support for our project. The project delivery commitments were honored without any deviations or delays. The commissioning of the project on date is highly appreciated and a special mention and thanks to the team for their support. Kudos to the Renfra team for all their support for our project. The project delivery commitments were honored without any deviations or delays. The commissioning of the project on date is highly appreciated and a special mention and thanks to the team for their support. Kudos to the Renfra team for all their support for our project. The project delivery commitments were honored without any deviations or delays. The commissioning of the project on date is highly appreciated and a special mention and thanks to the team for their support.",
+    "feedback": "We have had a positive experience working with Renfra Energy. The team was responsive, supportive and professional in handling our requirements. The quality of work and service delivery has been good, and we've always been able to communicate our needs clearly. We also appreciate the regular updates, timely support during critical situations and their focus on health and safety. Overall, we're happy with their service and support.",
     "overall_satisfaction": 92,
     "ratings": [
-      {
-        "label": "Employee response",
-        "value": 100
-      },
-      {
-        "label": "Quality of work",
-        "value": 90
-      },
-      {
-        "label": "Communication",
-        "value": 100
-      }
+      { "label": "Employee response", "value": 100 },
+      { "label": "Quality of work", "value": 90 },
+      { "label": "Communication", "value": 100 }
     ]
   },
   {
     "id": 2,
-    "company_name": "Raghul Spinning Mills",
-    "designation": "Mr. P. Devaraj, Partner",
-    "date": "09.12.2025",
+    "company_name": "Abikiran Agro Farms Asia",
+    "designation": "",
+    "date": "",
     "is_verified": true,
-    "feedback": "The efficiency and availability of the plant has been very satisfactory and yielding the desired results. The team is also very responsive and the regular updates on the operation and efficiencies is highly appreciated. We would like to thank the Renfra team for their very professional attitude in handling all our queries and providing very strategic solutions to our concerns.",
+    "feedback": "We have had a good experience working with Renfra Energy. The team communicates well, delivers the work as committed and maintains good quality throughout. Employees were cooperative and responsive, which made it easy for us to share our requirements and get the support we need. We also appreciate the way reports are submitted and how the team responds during critical situations. Their focus on workplace safety, PPE requirements, cleanliness and professional conduct has made our overall experience positive.",
     "overall_satisfaction": 92,
     "ratings": [
-      {
-        "label": "Employee response",
-        "value": 100
-      },
-      {
-        "label": "Quality of work",
-        "value": 90
-      },
-      {
-        "label": "Communication",
-        "value": 100
-      }
+      { "label": "Employee response", "value": 100 },
+      { "label": "Quality of work", "value": 90 },
+      { "label": "Communication", "value": 100 }
     ]
   },
   {
     "id": 3,
-    "company_name": "Geetha Krishna Spinning Mills",
-    "designation": "Mr. M. Kanniah, Electrical Engineer",
-    "date": "09.12.2025",
+    "company_name": "Indus TMT Industries Ltd",
+    "designation": "",
+    "date": "",
     "is_verified": true,
-    "feedback": "The outcome of our strategic project in Moolakarai has been excellent. The project was delivered on time in high quality and the efficiency of the plant has been put in optimum use without any issues. We have also seen a substantial savings from the project.",
+    "feedback": "Our experience with Renfra Energy has been very positive. Whenever we have questions or requirements, the team is quick to respond and easy to communicate with. We are satisfied with the quality of work and their commitment to delivering the services as agreed. The reporting process was well organised and kept us informed with regular updates. We also value the team's timely support during critical situations and their attention to workplace safety, PPE and maintaining clean working areas. The team's professional approach at our site has made our overall experience smooth and hassle-free.",
     "overall_satisfaction": 92,
     "ratings": [
-      {
-        "label": "Employee response",
-        "value": 100
-      },
-      {
-        "label": "Quality of work",
-        "value": 90
-      },
-      {
-        "label": "Communication",
-        "value": 100
-      }
+      { "label": "Employee response", "value": 100 },
+      { "label": "Quality of work", "value": 90 },
+      { "label": "Communication", "value": 100 }
     ]
   },
-   {
+  {
     "id": 4,
-    "company_name": "Geetha Krishna Spinning Mills",
-    "designation": "Mr. M. Kanniah, Electrical Engineer",
-    "date": "09.12.2025",
+    "company_name": "Kaleesuwari Refinery",
+    "designation": "",
+    "date": "",
     "is_verified": true,
-    "feedback": "The outcome of our strategic project in Moolakarai has been excellent. The project was delivered on time in high quality and the efficiency of the plant has been put in optimum use without any issues. We have also seen a substantial savings from the project.",
+    "feedback": "We've had a positive experience working with Renfra Energy. The site team has been committed throughout the project and has worked towards completing the work on time. We appreciate how promptly the team responds to our feedback and takes the necessary action. While government approvals were understandably outside the team's direct control, we found Renfra Energy proactive in managing the process and keeping things moving. Their commitment, responsiveness and end-to-end approach made our overall experience smooth and reassuring.",
     "overall_satisfaction": 92,
     "ratings": [
-      {
-        "label": "Employee response",
-        "value": 100
-      },
-      {
-        "label": "Quality of work",
-        "value": 90
-      },
-      {
-        "label": "Communication",
-        "value": 100
-      }
+      { "label": "Employee response", "value": 100 },
+      { "label": "Quality of work", "value": 90 },
+      { "label": "Communication", "value": 100 }
+    ]
+  },
+  {
+    "id": 5,
+    "company_name": "Schloss Chennai Pvt Ltd",
+    "designation": "",
+    "date": "",
+    "is_verified": true,
+    "feedback": "Renfra Energy team was responsive and attentive to our requirements. The work delivery was good and we received regular updates along the way. We also value the team's support during critical situations and their attention to safety, PPE and cleanliness at the workplace. Overall, we're pleased with the way Renfra Energy has supported us and maintained a professional approach throughout our association.",
+    "overall_satisfaction": 92,
+    "ratings": [
+      { "label": "Employee response", "value": 100 },
+      { "label": "Quality of work", "value": 90 },
+      { "label": "Communication", "value": 100 }
+    ]
+  },
+  {
+    "id": 6,
+    "company_name": "SCM Garments Pvt Ltd",
+    "designation": "",
+    "date": "",
+    "is_verified": true,
+    "feedback": "We appreciate the consistent support we've received from Renfra Energy. The team was cooperative and responsive, kept us regularly updated on the progress, and consistently delivered work that met our expectations. We've also had a good experience with their support during urgent situations and their approach to workplace safety and cleanliness. It was reassuring to work with a team that takes these aspects seriously.",
+    "overall_satisfaction": 92,
+    "ratings": [
+      { "label": "Employee response", "value": 100 },
+      { "label": "Quality of work", "value": 90 },
+      { "label": "Communication", "value": 100 }
+    ]
+  },
+  {
+    "id": 7,
+    "company_name": "Sree Santhosh Garments",
+    "designation": "",
+    "date": "",
+    "is_verified": true,
+    "feedback": "We're happy with the service from Renfra Energy. The team was supportive and responsive, with good coordination and timely assistance. Their professional approach and focus on workplace safety have made our experience positive.",
+    "overall_satisfaction": 92,
+    "ratings": [
+      { "label": "Employee response", "value": 100 },
+      { "label": "Quality of work", "value": 90 },
+      { "label": "Communication", "value": 100 }
     ]
   }
 ]
@@ -680,7 +686,7 @@ function TestimonialCard({ testimonial, position }) {
 
       {/* ───────────────── Footer ───────────────── */}
 
-      <div
+      {/* <div
         className="
           mt-auto
           pt-4
@@ -692,7 +698,7 @@ function TestimonialCard({ testimonial, position }) {
           gap-3
         "
       >
-        {/* Satisfaction */}
+       
 
         <div className="
           flex
@@ -764,7 +770,7 @@ function TestimonialCard({ testimonial, position }) {
           </div>
         </div>
 
-        {/* Clean energy */}
+       
 
         {isCenter && (
           <div
@@ -795,7 +801,7 @@ function TestimonialCard({ testimonial, position }) {
             </span>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
