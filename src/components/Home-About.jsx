@@ -61,7 +61,11 @@ function StatIcon({ index, title }) {
         <motion.g
           style={{ transformOrigin: "32px 13px" }}
           animate={{ rotate: 360 }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear",
+          }}
         >
           <circle cx="32" cy="13" r="5.5" fill="#3AB257" />
           {[0,45,90,135,180,225,270,315].map((deg, i) => {
@@ -93,35 +97,104 @@ function StatIcon({ index, title }) {
     );
   }
 
-  // ── Wind: turbine tower (blue) + 3 spinning blades (green) ──
+  // ─────────────────────────────────────────────
+  // WIND — CORRECTED ROTATION
+  // ─────────────────────────────────────────────
   if (t.includes("wind") || (!t && index === 1)) {
     return (
-      <svg viewBox="0 0 64 64" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        {/* Tower — blue trapezoid */}
-        <path d="M28 36 L24 62 L40 62 L36 36Z" fill="#1a4fa0" opacity="0.85" />
+      <svg
+        viewBox="0 0 64 64"
+        fill="none"
+        className="w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Tower */}
+        <path
+          d="M28 36 L24 61 L40 61 L36 36Z"
+          fill="#1a4fa0"
+          opacity="0.85"
+        />
+
         {/* Base */}
-        <rect x="20" y="59" width="24" height="5" rx="2.5" fill="#1a4fa0" />
-        {/* Hub */}
-        <circle cx="32" cy="34" r="4" fill="#1a4fa0" />
-        <circle cx="32" cy="34" r="2" fill="white" />
-        {/* Spinning blades */}
+        <rect
+          x="20"
+          y="59"
+          width="24"
+          height="5"
+          rx="2.5"
+          fill="#1a4fa0"
+        />
+
+        {/* Rotating blades */}
         <motion.g
-          style={{ transformOrigin: "32px 34px" }}
           animate={{ rotate: 360 }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+          transition={{
+            duration: 2.8,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          style={{
+            transformOrigin: "32px 34px",
+            transformBox: "view-box",
+          }}
         >
-          {/* Blade up */}
-          <path d="M32 30 C31 22 27 10 24 4 C28 14 31 24 32 30Z" fill="#3AB257" />
-          {/* Blade right-down */}
-          <path d="M35 36 C43 39 54 39 58 38 C50 37 42 35 35 36Z" fill="#3AB257" opacity="0.9" />
-          {/* Blade left-down */}
-          <path d="M29 37 C21 42 12 49 8 53 C14 48 23 42 29 37Z" fill="#3AB257" opacity="0.75" />
+          {/* Blade 1 */}
+          <path
+            d="
+              M32 34
+              C31.5 27 29 16 24 5
+              C28 13 32 23 32 34
+              Z
+            "
+            fill="#3AB257"
+          />
+
+          {/* Blade 2 */}
+          <path
+            d="
+              M32 34
+              C39 36 50 38 58 37
+              C51 40 41 40 32 34
+              Z
+            "
+            fill="#3AB257"
+            opacity="0.9"
+          />
+
+          {/* Blade 3 */}
+          <path
+            d="
+              M32 34
+              C27 41 17 49 8 53
+              C14 47 22 39 32 34
+              Z
+            "
+            fill="#3AB257"
+            opacity="0.75"
+          />
         </motion.g>
+
+        {/* Hub */}
+        <circle
+          cx="32"
+          cy="34"
+          r="4.2"
+          fill="#1a4fa0"
+        />
+
+        <circle
+          cx="32"
+          cy="34"
+          r="1.8"
+          fill="white"
+        />
       </svg>
     );
   }
 
-  // ── Battery: rounded square (blue) + lightning bolt (green, pulses) ──
+  // ─────────────────────────────────────────────
+  // BATTERY / BESS
+  // ─────────────────────────────────────────────
   if (
     t.includes("battery") ||
     t.includes("bess") ||
@@ -129,56 +202,238 @@ function StatIcon({ index, title }) {
     (!t && index === 2)
   ) {
     return (
-      <svg viewBox="0 0 64 64" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        {/* Outer rounded square */}
-        <rect x="6" y="6" width="52" height="52" rx="12" stroke="#1a4fa0" strokeWidth="3" fill="none" />
-        {/* Small terminal bumps on top */}
-        <rect x="18" y="2" width="10" height="6" rx="2" fill="#1a4fa0" />
-        <rect x="36" y="2" width="10" height="6" rx="2" fill="#1a4fa0" />
-        {/* Lightning bolt — green */}
+      <svg
+        viewBox="0 0 64 64"
+        fill="none"
+        className="w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Battery */}
+        <rect
+          x="6"
+          y="6"
+          width="52"
+          height="52"
+          rx="12"
+          stroke="#1a4fa0"
+          strokeWidth="3"
+        />
+
+        {/* Terminals */}
+        <rect
+          x="18"
+          y="2"
+          width="10"
+          height="6"
+          rx="2"
+          fill="#1a4fa0"
+        />
+
+        <rect
+          x="36"
+          y="2"
+          width="10"
+          height="6"
+          rx="2"
+          fill="#1a4fa0"
+        />
+
+        {/* Lightning */}
         <motion.path
           d="M37 10 L26 34 L34 34 L27 54 L38 28 L30 28 Z"
           fill="#3AB257"
-          animate={{ opacity: [1, 0.35, 1] }}
-          transition={{ duration: 1.3, repeat: Infinity, ease: "easeInOut" }}
+          animate={{
+            opacity: [1, 0.35, 1],
+          }}
+          transition={{
+            duration: 1.3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         />
       </svg>
     );
   }
 
-  // ── O&M: wrench (blue) + screwdriver (green) crossed, each rocks ──
-  return (
-    <svg viewBox="0 0 64 64" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      {/* Wrench — blue, rocks */}
+  // ─────────────────────────────────────────────
+  // OPERATION & MAINTENANCE
+  // WRENCH + SCREWDRIVER + GEAR
+  // ─────────────────────────────────────────────
+ return (
+  <svg
+    viewBox="0 0 64 64"
+    fill="none"
+    className="w-full h-full"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* ─────────────────────────────
+        GREEN GEAR
+        Fixed position
+        Rotates only around itself
+    ───────────────────────────── */}
+    <g transform="translate(19 44)">
       <motion.g
-        style={{ transformOrigin: "22px 22px" }}
-        animate={{ rotate: [0, -12, 0, 12, 0] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "linear",
+        }}
       >
-        {/* Wrench head circle */}
-        <circle cx="16" cy="16" r="9" stroke="#1a4fa0" strokeWidth="3" fill="#1a4fa0" fillOpacity="0.12" />
-        {/* Wrench notch */}
-        <path d="M10 10 L14 14 M22 10 L18 14" stroke="#1a4fa0" strokeWidth="2.5" strokeLinecap="round" />
-        {/* Wrench handle */}
-        <path d="M22 22 L48 48" stroke="#1a4fa0" strokeWidth="5" strokeLinecap="round" />
-        {/* Wrench end */}
-        <rect x="44" y="46" width="9" height="7" rx="2" transform="rotate(45 44 46)" fill="#1a4fa0" />
+
+        <g transform="scale(0.75)">
+          {/* Gear teeth */}
+        <path
+          d="
+            M-3 -18
+            L3 -18
+            L4 -14
+            L8 -13
+            L11 -16
+            L16 -11
+            L13 -8
+            L15 -4
+            L19 -3
+            L19 3
+            L15 4
+            L13 8
+            L16 11
+            L11 16
+            L8 13
+            L4 15
+            L3 19
+            L-3 19
+            L-4 15
+            L-8 13
+            L-11 16
+            L-16 11
+            L-13 8
+            L-15 4
+            L-19 3
+            L-19 -3
+            L-15 -4
+            L-13 -8
+            L-16 -11
+            L-11 -16
+            L-8 -13
+            L-4 -14
+            Z
+          "
+          fill="#3AB257"
+        />
+
+        {/* Gear body */}
+        <circle
+          cx="0"
+          cy="0"
+          r="11"
+          fill="#3AB257"
+        />
+
+        {/* Gear hole */}
+        <circle
+          cx="0"
+          cy="0"
+          r="4"
+          fill="white"
+        />
+        </g>
+        
       </motion.g>
-      {/* Screwdriver — green, rocks opposite */}
-      <motion.g
-        style={{ transformOrigin: "48px 16px" }}
-        animate={{ rotate: [0, 12, 0, -12, 0] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-      >
-        {/* Handle */}
-        <rect x="42" y="4" width="12" height="18" rx="5" fill="#3AB257" />
-        {/* Shaft */}
-        <line x1="48" y1="22" x2="18" y2="58" stroke="#3AB257" strokeWidth="4" strokeLinecap="round" />
-        {/* Flat tip */}
-        <line x1="14" y1="56" x2="22" y2="62" stroke="#3AB257" strokeWidth="3.5" strokeLinecap="round" />
-      </motion.g>
-    </svg>
-  );
+    </g>
+
+    {/* ─────────────────────────────
+        BLUE WRENCH
+        Static
+    ───────────────────────────── */}
+    <g>
+      {/* Wrench body */}
+      <path
+        d="
+          M11 9
+          C7 13 7 20 11 24
+          C15 28 21 28 25 24
+
+          L49 48
+
+          C51 50 54 50 56 48
+          C58 46 58 43 56 41
+
+          L32 17
+
+          C35 12 34 7 30 4
+          C26 1 20 2 16 5
+
+          L22 11
+          L17 16
+          Z
+        "
+        fill="#1a4fa0"
+      />
+
+      {/* Wrench opening */}
+      <path
+        d="
+          M16 5
+          L22 11
+          L17 16
+          L11 10
+          C12 8 14 6 16 5
+          Z
+        "
+        fill="white"
+      />
+
+      {/* Green handle highlight */}
+      <path
+        d="M27 22 L49 44"
+        stroke="#3AB257"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+    </g>
+
+    {/* ─────────────────────────────
+        GREEN SCREWDRIVER
+        Static
+    ───────────────────────────── */}
+    <g>
+      {/* Handle */}
+      <rect
+        x="39"
+        y="6"
+        width="13"
+        height="19"
+        rx="5"
+        fill="#1a4fa0"
+      />
+
+      {/* Green center */}
+      <rect
+        x="42"
+        y="9"
+        width="7"
+        height="13"
+        rx="3"
+        fill="#3AB257"
+      />
+
+      {/* Shaft */}
+      <path
+        d="M45.5 25 V49"
+        stroke="#1a4fa0"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+
+      {/* Tip */}
+      <path
+        d="M43 49 L48 49 L45.5 57 Z"
+        fill="#1a4fa0"
+      />
+    </g>
+  </svg>
+);
 }
 
 export default function AboutUsSection() {
