@@ -371,7 +371,7 @@ function ProjectMap({ mode = "completed" }) {
 
 export default function InteractiveProjectsMap() {
   return (
-    <section className="w-[90%] mx-auto pb-12">
+    <section className="w-[90%] mx-auto pb-8 sm:pb-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         <ProjectMap mode="completed" />
         <ProjectMap mode="ongoing" />

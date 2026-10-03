@@ -105,7 +105,7 @@ export function TabSolutionSection() {
     SERVICE_TAGS.solar;
 
   return (
-    <section className="w-full bg-[#fff] py-10 sm:py-14 lg:py-16">
+    <section className="w-full bg-[#fff] py-10 pb-0 sm:py-14 lg:py-16">
       <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 mb-8">
 
         {/* ── TOP ROW: Heading left | Tabs right ──────────────────────────── */}

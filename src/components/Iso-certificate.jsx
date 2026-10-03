@@ -101,7 +101,7 @@ export default function IsoCertificationSection() {
   };
 
   return (
-    <section className="w-full bg-[#f5f5f5] py-12 md:py-16">
+    <section className="w-full bg-[#f5f5f5] py-12 md:py-16 ">
       <div className="mx-auto max-w-[85rem] 2xl:max-w-[90rem] px-4 sm:px-6 lg:px-8">
         <div className="mb-8 md:mb-12">
           <h2 className="text-2xl font-bold text-[#293E52] sm:text-2xl md:text-3xl lg:4xl">

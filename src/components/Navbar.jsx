@@ -769,36 +769,58 @@ function NavbarContent() {
                   key={item.label}
                   className="border-b border-gray-200 py-3"
                 >
-                  <button
-                    onClick={() => toggleMobileMenu(item.label)}
-                    className="w-full flex justify-between items-center text-lg font-semibold text-[#293E52]"
-                  >
-                    <span
-                      className={
-                        item.label === "Investor Relations" && isInvestorRelationsActive()
-                          ? "bg-gradient-to-r from-[#3AB257] to-[#329ACD] bg-clip-text text-transparent"
-                          : ""
-                      }
-                    >
-                      {item.label}
-                    </span>
+                  <div className="w-full flex justify-between items-center text-lg font-semibold text-[#293E52]">
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className={
+                          (item.label === "About Us" && isAboutActive()) ||
+                          (item.label === "Our Solutions" && isActive(item.href))
+                            ? "bg-gradient-to-r from-[#3AB257] to-[#329ACD] bg-clip-text text-transparent"
+                            : ""
+                        }
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => toggleMobileMenu(item.label)}
+                        className={`text-left ${
+                          item.label === "Investor Relations" && isInvestorRelationsActive()
+                            ? "bg-gradient-to-r from-[#3AB257] to-[#329ACD] bg-clip-text text-transparent"
+                            : ""
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    )}
 
-                    <svg
-                      className={`w-5 h-5 transition-transform duration-300 ${
-                        openMobileMenu === item.label ? "rotate-180" : ""
-                      }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                    <button
+                      type="button"
+                      onClick={() => toggleMobileMenu(item.label)}
+                      aria-label={`Toggle ${item.label} submenu`}
+                      aria-expanded={openMobileMenu === item.label}
+                      className="p-1"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        className={`w-5 h-5 transition-transform duration-300 ${
+                          openMobileMenu === item.label ? "rotate-180" : ""
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
 
                   {openMobileMenu === item.label && (
                     <div className="pl-4 pt-3 flex flex-col gap-3">

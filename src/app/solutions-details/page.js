@@ -663,7 +663,7 @@ function SolutionInnerContent() {
         bgImage={currentSolution.bannerImage || "/images/sol-inner.png"}
       />
 
-      <div className="relative z-10">
+      <div className="relative z-10 pb-0 sm:pb-18">
         {/* ========================================================= */}
         {/* SECTION 1: TOP HERO (OUR SOLUTIONS)                      */}
         {/* ========================================================= */}
@@ -750,18 +750,18 @@ function SolutionInnerContent() {
 
               {/* Stats on the right side */}
               <div className="absolute inset-0 flex items-center justify-end px-6 sm:px-10 md:px-14">
-                <div className="flex items-center gap-6 sm:gap-10 md:gap-12">
+                <div className="flex items-center gap-4 sm:gap-10 md:gap-12">
                   
                   {/* Stat 1: Ongoing Projects */}
                   <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#48bb78] text-white flex items-center justify-center shrink-0 shadow-sm">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#48bb78] text-white flex items-center justify-center shrink-0 shadow-sm">
                       <Zap className="w-5 h-5 fill-white text-white" />
                     </div>
                     <div>
                       <p className="text-white/85 text-xs font-semibold">
                         {currentSolution.stats[0]?.label || "Ongoing Projects"}
                       </p>
-                      <p className="text-white font-extrabold text-3xl sm:text-4xl leading-tight my-0.5">
+                      <p className="text-white font-extrabold text-xl sm:text-4xl leading-tight my-0.5">
                         {currentSolution.stats[0]?.number || "12"}
                       </p>
                       <div
@@ -779,7 +779,7 @@ function SolutionInnerContent() {
 
                   {/* Stat 2: Installed Projects */}
                   { currentSolution.stats[1]?.label && <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#48bb78] text-white flex items-center justify-center shrink-0 shadow-sm">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#48bb78] text-white flex items-center justify-center shrink-0 shadow-sm">
                       {solutionKey === "wind" ? (
                         <WindTurbineIcon className="w-5 h-5 text-white" />
                       ) : (
@@ -790,7 +790,7 @@ function SolutionInnerContent() {
                       <p className="text-white/85 text-xs font-semibold">
                         {currentSolution.stats[1]?.label || ""}
                       </p>
-                      <p className="text-white font-extrabold text-3xl sm:text-4xl leading-tight my-0.5">
+                      <p className="text-white font-extrabold text-xl sm:text-4xl leading-tight my-0.5">
                         {currentSolution.stats[1]?.number || ""}
                       </p>
                       <Link
@@ -883,7 +883,7 @@ function SolutionInnerContent() {
         {/* SECTION 6: RELATED SOLUTIONS                              */}
         {/* ========================================================= */}
         {relatedSolutions.length > 0 && (
-          <section className="bg-[#fff] pb-16">
+          <section className="bg-[#fff] ">
             <div className="w-full max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
               <h3 className="text-2xl sm:text-3xl font-extrabold text-left mb-8 text-[#1A202C]">
                 Related Solutions
