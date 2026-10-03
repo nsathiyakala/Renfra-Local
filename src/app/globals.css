@@ -22,6 +22,40 @@ font-family: "Sans-Outline-ExBold",sans-serif
   }
 }
 
+
+@keyframes testimonial-slide-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes testimonial-slide-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.testimonial-slide-enter-next {
+  animation: testimonial-slide-from-right 650ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.testimonial-slide-enter-previous {
+  animation: testimonial-slide-from-left 650ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-slide-enter-next,
+  .testimonial-slide-enter-previous {
+    animation: none;
+  }
+}
+
 .project-loop {
   animation-name: project-loop;
   animation-timing-function: linear;

@@ -814,8 +814,10 @@ export function TestimonialsNew() {
 
   const [centerIdx, setCenterIdx] = useState(0);
   const [isSliding, setIsSliding] = useState(false);
+  const [slideDirection, setSlideDirection] = useState(null);
   const autoRef = useRef(null);
   const slideTimeoutRef = useRef(null);
+  const touchStartRef = useRef(null);
 
 
   // ───────────────── Auto Slider ─────────────────
@@ -833,6 +835,7 @@ export function TestimonialsNew() {
     autoRef.current =
       setInterval(() => {
 
+        setSlideDirection("next");
         setCenterIdx((prev) => {
           return prev + 1 >= testimonials.length ? 0 : prev + 1;
         });
@@ -874,6 +877,7 @@ export function TestimonialsNew() {
 
   const changeSlide = (
     nextIndex,
+    direction = nextIndex > centerIdx ? "next" : "previous",
   ) => {
 
     if (
@@ -884,6 +888,7 @@ export function TestimonialsNew() {
     }
 
     setIsSliding(true);
+    setSlideDirection(direction);
 
     setCenterIdx(nextIndex);
 
@@ -916,7 +921,7 @@ export function TestimonialsNew() {
         ? 0
         : centerIdx + 1;
 
-    changeSlide(next);
+    changeSlide(next, "next");
   };
 
 
@@ -931,7 +936,7 @@ export function TestimonialsNew() {
         ? testimonials.length - 1
         : centerIdx - 1;
 
-    changeSlide(prev);
+    changeSlide(prev, "previous");
   };
 
 
@@ -946,6 +951,37 @@ export function TestimonialsNew() {
     }
 
     changeSlide(index);
+  };
+
+  const handleTouchStart = (event) => {
+    const touch = event.touches[0];
+    touchStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+    };
+  };
+
+  const handleTouchEnd = (event) => {
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+
+    if (!start) {
+      return;
+    }
+
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+
+    if (Math.abs(deltaX) < 40 || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      return;
+    }
+
+    if (deltaX < 0) {
+      goNext();
+    } else {
+      goPrev();
+    }
   };
 
 
@@ -1003,10 +1039,10 @@ export function TestimonialsNew() {
         bg-gradient-to-b
         from-[#329ACD]
         to-[#3AB257]
-        px-4
         py-12
         sm:py-14
         md:py-16
+        px-4
       "
     >
 
@@ -1014,9 +1050,10 @@ export function TestimonialsNew() {
 
       <div
         className="
-          max-w-2xl
+          max-w-[85rem] 2xl:max-w-[90rem]
           mx-auto
           text-center
+          px-8 sm:px-6 lg:px-8
           mb-8
           sm:mb-10
         "
@@ -1114,7 +1151,8 @@ export function TestimonialsNew() {
     max-w-[85rem] 2xl:max-w-[90rem]
     mx-auto
     px-0
-    sm:px-8
+    sm:px-4
+    lg:px-8
   "
 >
   {/* Previous Button */}
@@ -1169,10 +1207,10 @@ export function TestimonialsNew() {
     <div
       className="
         hidden
-        md:block
+        min-[800px]:block
         invisible
         w-full
-        md:w-1/2
+        min-[800px]:w-1/2
         px-2
       "
     >
@@ -1188,7 +1226,7 @@ export function TestimonialsNew() {
     <div
       className="
         hidden
-        md:block
+        min-[800px]:block
         absolute
         inset-x-0
         top-6
@@ -1302,10 +1340,16 @@ export function TestimonialsNew() {
     {/* ───────────────── Mobile Card ───────────────── */}
 
     <div
-      className="
-        md:hidden
+      className={`
+        min-[800px]:hidden
         w-full
-      "
+        overflow-hidden
+        ${slideDirection ? `testimonial-slide-enter-${slideDirection}` : ""}
+      `}
+      key={centerIdx}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      style={{ touchAction: "pan-y" }}
     >
       <TestimonialCard
         testimonial={

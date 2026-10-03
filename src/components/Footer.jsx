@@ -534,6 +534,7 @@ export default function Footer() {
                   { label: "About Us", href: "/about" },
                   { label: "Our Solutions", href: "/solutions" },
                   { label: "Projects", href: "/projects" },
+                  { label: "O & M", href: "/operations-maintenance" },
                   { label: "IMS @ Renfra", href: "/ims@renfra" },
                   { label: "News & Media Page", href: "/news" },
                   { label: "Career", href: "/career" },

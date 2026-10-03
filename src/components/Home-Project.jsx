@@ -199,7 +199,7 @@ export function OurProjectsSection() {
 
   return (
     <section className="w-full bg-[#F8FAF9] py-12 overflow-hidden">
-      <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-0">
+      <div className="max-w-[85rem] 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ================= HEADER SECTION ================= */}
         <div className="mb-10 flex flex-col lg:flex-row lg:justify-between lg:items-start">
