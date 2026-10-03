@@ -250,7 +250,7 @@ function OmPortfolio() {
         plant availability, optimizing generation, maintaining equipment reliability and
         extending asset life.
       </p>
-      <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+      <p className="text-[#000] font-semibold text-sm sm:text-base leading-relaxed mb-8">
         Our key O&amp;M activities include:
       </p>
       <ServiceGrid items={services} />
@@ -299,7 +299,7 @@ function OperationalPortfolio() {
       </p>
 
       {/* Focus — icon-above-text grid, full width */}
-      <p className="text-sm sm:text-base font-bold text-[#000] mb-6">
+      <p className="text-sm sm:text-base text-[#000] font-semibold mb-6">
         Our asset management approach focuses on:
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 mb-10">
@@ -417,7 +417,7 @@ function SitePresence() {
 
         {/* ServiceGrid */}
         <div className="">
-          <p className="text-sm sm:text-base font-semibold text-[#173b42] mb-5">Our site teams support:</p>
+          <p className="text-sm sm:text-base text-[#000] font-semibold mb-5">Our site teams support:</p>
           <ServiceGrid items={support} iconBg="#eaf4fd" iconColor="#329ACD" cols="4" />
 
           <div className="mt-6 bg-[#f0f9ff] border border-[#d0e8f8] rounded-2xl p-5 flex items-start gap-3.5">
@@ -577,7 +577,7 @@ function CoreActivities() {
           Routine inspections and planned maintenance activities are carried out to identify
           potential failures at an early stage and maintain equipment reliability.
         </p>
-        <p className="text-sm sm:text-base text-slate-600 mb-5">Major activities include:</p>
+        <p className="text-sm sm:text-base text-[#000] font-semibold mb-5">Major activities include:</p>
         <div className="grid sm:grid-cols-2 gap-3">
           {preventive.map((t, i) => (
             <NumberedCard key={i} number={i + 1} text={t} accent={i % 2 === 0 ? "#3AB257" : "#329ACD"} />
@@ -627,7 +627,7 @@ function CoreActivities() {
           Continuous monitoring and analysis of plant operating parameters are carried out
           to identify generation losses, equipment abnormalities and performance deviations.
         </p>
-        <p className="text-sm sm:text-base text-slate-600 mb-5">Key monitoring areas include:</p>
+        <p className="text-sm sm:text-base text-[#000] font-semibold mb-5">Key monitoring areas include:</p>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2.5">
           {monitoring.map((t, i) => (
             <DotRow key={i} text={t} index={i} />
@@ -731,7 +731,7 @@ function IvCurveTesting() {
         IV Curve Testing is used to assess the electrical characteristics and performance
         of PV modules and strings and to identify abnormal operating conditions.
       </p>
-      <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+      <p className="text-[#000] font-semibold text-sm sm:text-base leading-relaxed mb-8">
         The testing supports identification of:
       </p>
 
@@ -790,7 +790,7 @@ function ElectricalTesting() {
         of critical electrical equipment through a combination of in-house technical
         capabilities and specialized third-party testing agencies.
       </p>
-      <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+      <p className="text-[#000] font-semibold text-sm sm:text-base leading-relaxed mb-6">
         Testing and assessment may include:
       </p>
 
@@ -883,7 +883,7 @@ function RelayTesting() {
 
         {/* Activities — icon grid spanning 2 cols */}
         <div className="lg:col-span-2">
-          <p className="text-sm sm:text-base font-bold text-[#173b42] mb-5">Key activities include:</p>
+          <p className="text-sm sm:text-base text-[#000] font-semibold mb-5">Key activities include:</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {activities.map((item, i) => {
               const Icon = item.icon;
@@ -960,7 +960,7 @@ function PcbRepair() {
       <div className="grid lg:grid-cols-2 gap-8 items-start">
         {/* Icon-badge cards */}
         <div>
-          <p className="text-sm sm:text-base font-semibold text-[#173b42] mb-4">Services include:</p>
+          <p className="text-sm sm:text-base text-[#000] font-semibold mb-4">Services include:</p>
           <ServiceGrid items={services} iconBg="#eaf4fd" iconColor="#329ACD" cols="3" />
         </div>
 

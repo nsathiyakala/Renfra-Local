@@ -172,8 +172,8 @@ export default function RenfraSolutionNew() {
                     aria-hidden="true"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#102d32]/65 via-[#102d32]/25 to-[#102d32]/0" />
-                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#102d32]/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#102d32]/80 via-transparent to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#102d32]/80  to-transparent" />
 
                   <div className="relative z-10 flex h-full max-w-2xl flex-col justify-end p-6 sm:p-10 md:p-14">
                     {/* <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-[#a9e6b4] sm:text-sm">
@@ -183,7 +183,7 @@ export default function RenfraSolutionNew() {
                     <h3 className="mb-4 max-w-[18ch] text-2xl lg:text-3xl font-bold leading-tight text-white sm:text-2xl md:text-3xl">
                       {card.title}
                     </h3>
-                    <p className="max-w-xl text-sm leading-7 text-white/90 text-sm sm:text-sm md:text-base lg:text-base">
+                    <p className="max-w-xl text-sm leading-7 text-white text-sm sm:text-sm md:text-base lg:text-base">
                       {card.description}
                     </p>
                     <span className="mt-7 inline-flex w-fit items-center gap-3 text-sm font-semibold text-white sm:text-base">
