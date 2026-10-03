@@ -24,7 +24,7 @@ function SectionTag({ text }) {
 // Numbered step card (for ordered processes / activity lists)
 function NumberedCard({ number, text, accent = "#3AB257" }) {
   return (
-    <div className="flex items-start gap-3 bg-white border border-slate-200/80 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-[#3AB257]/30 transition-all duration-200">
+    <div className="flex items-center gap-3 bg-white border border-slate-200/80 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-[#3AB257]/30 transition-all duration-200">
       <span
         className="w-7 h-7 rounded-full text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5"
         style={{ backgroundColor: accent }}
@@ -470,7 +470,7 @@ function TeamCapability() {
         Team &amp; Organizational Capability
       </h2>
 
-      <div className="grid lg:grid-cols-2 gap-8 mb-6">
+      <div className="grid  gap-8 mb-6">
         {/* 5.1 */}
         <div>
           <h3 className="text-base sm:text-lg font-bold text-[#329ACD] mb-4">Core Management &amp; Technical Team</h3>
@@ -606,7 +606,7 @@ function CoreActivities() {
                     <span className="text-[14px] font-semibold text-slate-700 text-center w-20 leading-tight">{step.label}</span>
                   </div>
                   {idx < faultSteps.length - 1 && (
-                    <ChevronRight className="w-4 h-4 text-slate-300 -mt-5 shrink-0 hidden sm:block" />
+                    <ChevronRight className="w-4 h-4 text-[#000] -mt-5 shrink-0 hidden sm:block" />
                   )}
                 </div>
               );
@@ -674,7 +674,7 @@ function DroneThermography() {
 
       <div className="grid lg:grid-cols-12 gap-8 items-start">
         {/* Image */}
-        <div className="col-span-4 rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm">
+        <div className="col-span-12 md:col-span-4 rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm">
           <div className="relative h-60 overflow-hidden">
             <img src="/images/new-ims-banner.jpg" alt="Drone Thermography Inspection"
               className="w-full h-full object-cover" />
@@ -694,7 +694,7 @@ function DroneThermography() {
         </div>
 
         {/* ServiceGrid for identifications */}
-        <div className="col-span-8">
+        <div className="col-span-12 md:col-span-8">
           <p className="text-sm sm:text-base font-semibold text-[#173b42] mb-4">
             The inspection process supports identification of:
           </p>
@@ -737,13 +737,13 @@ function IvCurveTesting() {
 
       <div className="grid lg:grid-cols-12 gap-8 items-start">
         {/* Dot-row cards */}
-        <div className="col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
+        <div className="col-span-12 md:col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
           {identifications.map((t, i) => (
             <DotRow key={i} text={t} index={i} />
           ))}
         </div>
 
-        <div className="col-span-7 space-y-5">
+        <div className="col-span-12 md:col-span-7 space-y-5">
           <div className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm">
             <div className="h-52 overflow-hidden">
               <img src="/images/sol-inner.png" alt="IV Curve Testing"
