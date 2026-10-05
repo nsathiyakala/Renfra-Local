@@ -3,9 +3,9 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
-const EMAILJS_SERVICE_ID = "service_i8cz6qf";
-const EMAILJS_TEMPLATE_ID = "template_0kytber";
-const EMAILJS_PUBLIC_KEY = "-iAf44sOng6hi5gKV";
+const EMAILJS_SERVICE_ID = "service_lu7idzb";
+const EMAILJS_TEMPLATE_ID = "template_mj764se";
+const EMAILJS_PUBLIC_KEY = "c3_kKp9-KxCC0A86J";
 
 const initialForm = {
   candidate_name: "",
