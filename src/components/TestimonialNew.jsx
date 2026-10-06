@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import {
   ArrowLeft,
@@ -28,6 +29,7 @@ const testimonials = [
   {
     "id": 1,
     "company_name": "Aachi Masala Foods Pvt Ltd",
+    "logo_path": "/images/testimonials/Aachi.jpg",
     "designation": "",
     "date": "",
     "is_verified": true,
@@ -39,23 +41,11 @@ const testimonials = [
       { "label": "Communication", "value": 100 }
     ]
   },
+
   {
     "id": 2,
-    "company_name": "Abikiran Agro Farms Asia",
-    "designation": "",
-    "date": "",
-    "is_verified": true,
-    "feedback": "We have had a good experience working with Renfra Energy. The team communicates well, delivers the work as committed and maintains good quality throughout. Employees were cooperative and responsive, which made it easy for us to share our requirements and get the support we need. We also appreciate the way reports are submitted and how the team responds during critical situations. Their focus on workplace safety, PPE requirements, cleanliness and professional conduct has made our overall experience positive.",
-    "overall_satisfaction": 92,
-    "ratings": [
-      { "label": "Employee response", "value": 100 },
-      { "label": "Quality of work", "value": 90 },
-      { "label": "Communication", "value": 100 }
-    ]
-  },
-  {
-    "id": 3,
     "company_name": "Indus TMT Industries Ltd",
+    "logo_path": "/images/testimonials/indus.jpg",
     "designation": "",
     "date": "",
     "is_verified": true,
@@ -67,9 +57,11 @@ const testimonials = [
       { "label": "Communication", "value": 100 }
     ]
   },
+
   {
-    "id": 4,
+    "id": 3,
     "company_name": "Kaleesuwari Refinery",
+    "logo_path": "/images/testimonials/kaleeswari.png",
     "designation": "",
     "date": "",
     "is_verified": true,
@@ -81,13 +73,15 @@ const testimonials = [
       { "label": "Communication", "value": 100 }
     ]
   },
+
   {
-    "id": 5,
-    "company_name": "Schloss Chennai Pvt Ltd",
+    "id": 4,
+    "company_name": "Abikiran Agro Farms Asia",
+    // "logo_path": "/images/client-new-logo/client-18.png",
     "designation": "",
     "date": "",
     "is_verified": true,
-    "feedback": "Renfra Energy team was responsive and attentive to our requirements. The work delivery was good and we received regular updates along the way. We also value the team's support during critical situations and their attention to safety, PPE and cleanliness at the workplace. Overall, we're pleased with the way Renfra Energy has supported us and maintained a professional approach throughout our association.",
+    "feedback": "We have had a good experience working with Renfra Energy. The team communicates well, delivers the work as committed and maintains good quality throughout. Employees were cooperative and responsive, which made it easy for us to share our requirements and get the support we need. We also appreciate the way reports are submitted and how the team responds during critical situations. Their focus on workplace safety, PPE requirements, cleanliness and professional conduct has made our overall experience positive.",
     "overall_satisfaction": 92,
     "ratings": [
       { "label": "Employee response", "value": 100 },
@@ -95,9 +89,10 @@ const testimonials = [
       { "label": "Communication", "value": 100 }
     ]
   },
-  {
-    "id": 6,
+   {
+    "id": 5,
     "company_name": "SCM Garments Pvt Ltd",
+    "logo_path": "/images/testimonials/scm.jpg",
     "designation": "",
     "date": "",
     "is_verified": true,
@@ -109,9 +104,27 @@ const testimonials = [
       { "label": "Communication", "value": 100 }
     ]
   },
+  
+  {
+    "id": 6,
+    "company_name": "Schloss Chennai Pvt Ltd",
+    // "logo_path": "/images/client-new-logo/client-5.png",
+    "designation": "",
+    "date": "",
+    "is_verified": true,
+    "feedback": "Renfra Energy team was responsive and attentive to our requirements. The work delivery was good and we received regular updates along the way. We also value the team's support during critical situations and their attention to safety, PPE and cleanliness at the workplace. Overall, we're pleased with the way Renfra Energy has supported us and maintained a professional approach throughout our association.",
+    "overall_satisfaction": 92,
+    "ratings": [
+      { "label": "Employee response", "value": 100 },
+      { "label": "Quality of work", "value": 90 },
+      { "label": "Communication", "value": 100 }
+    ]
+  },
+ 
   {
     "id": 7,
     "company_name": "Sree Santhosh Garments",
+    // "logo_path": "/images/client-new-logo/client-7.png",
     "designation": "",
     "date": "",
     "is_verified": true,
@@ -423,7 +436,7 @@ function TestimonialCard({ testimonial, position }) {
 
         ${
           isCenter
-            ? "p-6 sm:p-7"
+            ? "p-3 sm:p-7"
             : "p-4 sm:p-5"
         }
       `}
@@ -435,37 +448,40 @@ function TestimonialCard({ testimonial, position }) {
 
           {/* Logo */}
 
-          <div
-            className={`
-              rounded-xl
-              border
-              border-emerald-100
-              bg-emerald-50
-              flex
-              items-center
-              justify-center
-              shrink-0
-              overflow-hidden
-
-              ${
-                isCenter
-                  ? "w-11 h-11"
-                  : "w-9 h-9"
-              }
-            `}
-          >
-            {logoPath ? (
-              <img
+          {logoPath ? (
+            <div
+              className={`border rounded-xl overflow-hidden shrink-0 ${
+                isCenter ? "w-11 h-11 md:w-15 md:h-15" : "w-11 h-11"
+              }`}
+            >
+              <Image
                 src={logoPath}
                 alt={companyName}
-                className="
-                  w-full
-                  h-full
-                  object-contain
-                  p-1.5
-                "
+                width={44}
+                height={44}
+                className="h-full w-full scale-125 object-contain"
               />
-            ) : (
+            </div>
+          ) : (
+            <div
+              className={`
+                rounded-xl
+                border
+                border-emerald-100
+                bg-emerald-50
+                flex
+                items-center
+                justify-center
+                shrink-0
+                overflow-hidden
+
+                ${
+                  isCenter
+                    ? "w-11 h-11"
+                    : "w-9 h-9"
+                }
+              `}
+            >
               <span className="
                 text-[10px]
                 font-bold
@@ -473,8 +489,8 @@ function TestimonialCard({ testimonial, position }) {
               ">
                 {initials}
               </span>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Company */}
 
