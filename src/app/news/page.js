@@ -9,6 +9,7 @@ import InnerBanner from "@/components/Inner-banner";
    post link (used for the "Read more..." overlay link).
    ───────────────────────────────────────────────────────────────────────── */
 const POSTS = [
+  { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7511430618443005952?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7511430618443005952" },
   { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7510567024398602240?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7510567024398602240" },
   { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7509473091429888000?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7509473091429888000" },
   { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7509222571389870081?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7509222571389870081" },
