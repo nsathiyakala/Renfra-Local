@@ -77,7 +77,7 @@ const testimonials = [
   {
     "id": 4,
     "company_name": "Abikiran Agro Farms Asia",
-    // "logo_path": "/images/client-new-logo/client-18.png",
+    "logo_path": "/images/testimonials/abikiran.png",
     "designation": "",
     "date": "",
     "is_verified": true,
@@ -108,7 +108,7 @@ const testimonials = [
   {
     "id": 6,
     "company_name": "Schloss Chennai Pvt Ltd",
-    // "logo_path": "/images/client-new-logo/client-5.png",
+    "logo_path": "/images/testimonials/scholas.png",
     "designation": "",
     "date": "",
     "is_verified": true,
@@ -124,7 +124,7 @@ const testimonials = [
   {
     "id": 7,
     "company_name": "Sree Santhosh Garments",
-    // "logo_path": "/images/client-new-logo/client-7.png",
+    "logo_path": "/images/testimonials/sree-symbol.png",
     "designation": "",
     "date": "",
     "is_verified": true,

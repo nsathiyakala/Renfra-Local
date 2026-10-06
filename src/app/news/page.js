@@ -9,16 +9,13 @@ import InnerBanner from "@/components/Inner-banner";
    post link (used for the "Read more..." overlay link).
    ───────────────────────────────────────────────────────────────────────── */
 const POSTS = [
-  { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7511430618443005952?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7511430618443005952" },
+   { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7511430618443005952?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7511430618443005952" },
   { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7510567024398602240?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7510567024398602240" },
   { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7509473091429888000?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7509473091429888000" },
   { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7509222571389870081?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7509222571389870081" },
   { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7503719316807192576?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7503719316807192576" },
   { embedSrc: "https://www.linkedin.com/embed/feed/update/urn:li:share:7503422349191385089?collapsed=1", postUrl: "https://www.linkedin.com/feed/update/urn:li:share:7503422349191385089" },
 ];
-
-// Height of LinkedIn's action bar (Like · Comment · Share · Send)
-const ACTION_BAR_H = 52;
 
 /* ─────────────────────────────────────────────────────────────────────────
    EmbedCard
@@ -28,6 +25,10 @@ function EmbedCard({ embedSrc, postUrl, index }) {
   const [iframeH, setIframeH] = useState(670);
 
   useEffect(() => {
+    if (iframeRef.current) {
+      iframeRef.current.credentialless = true;
+    }
+
     function onMessage(e) {
       if (
         e.origin === "https://www.linkedin.com" &&
@@ -36,19 +37,18 @@ function EmbedCard({ embedSrc, postUrl, index }) {
         iframeRef.current &&
         e.source === iframeRef.current.contentWindow
       ) {
-        setIframeH(e.data.data.height + 2);
+        // Full height with a small buffer so likes, comments & action buttons are never cut off
+        setIframeH(Math.ceil(e.data.data.height) + 4);
       }
     }
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
   }, []);
 
-  const wrapperH = iframeH - ACTION_BAR_H;
-
   return (
     <div
       className="break-inside-avoid mb-5 rounded-2xl border border-[#e2e8f0] bg-white shadow-sm hover:shadow-md transition-shadow duration-200"
-      style={{ overflow: "hidden", height: wrapperH, position: "relative" }}
+      style={{ overflow: "hidden", height: iframeH, position: "relative" }}
     >
       <iframe
         ref={iframeRef}
@@ -61,6 +61,7 @@ function EmbedCard({ embedSrc, postUrl, index }) {
         scrolling="no"
         className="block w-full border-0"
         loading="lazy"
+        credentialless={true}
       />
 
       {/* LinkedIn wordmark mask */}
@@ -130,7 +131,7 @@ function LinkedInPosts() {
           href="https://www.linkedin.com/company/renfraenergy"
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 bg-[#0A66C2] hover:bg-[#004182] text-white text-sm font-semibold px-5 py-2.5 rounded-md shadow-sm transition-colors shrink-0"
+          className="w-fit inline-flex items-center gap-2 bg-[#0A66C2] hover:bg-[#004182] text-white text-sm font-semibold px-5 py-2.5 rounded-md shadow-sm transition-colors shrink-0"
         >
           <Linkedin className="h-4 w-4" />
           Follow on LinkedIn
