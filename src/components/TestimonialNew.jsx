@@ -436,7 +436,7 @@ function TestimonialCard({ testimonial, position }) {
 
         ${
           isCenter
-            ? "p-3 sm:p-7"
+            ? "p-3 sm:p-7 sm:pt-4"
             : "p-4 sm:p-5"
         }
       `}
@@ -451,7 +451,7 @@ function TestimonialCard({ testimonial, position }) {
           {logoPath ? (
             <div
               className={`border rounded-xl overflow-hidden shrink-0 ${
-                isCenter ? "w-11 h-11 md:w-15 md:h-15" : "w-11 h-11"
+                isCenter ? "w-11 h-11 md:w-12 md:h-12" : "w-11 h-11"
               }`}
             >
               <Image
@@ -459,7 +459,7 @@ function TestimonialCard({ testimonial, position }) {
                 alt={companyName}
                 width={44}
                 height={44}
-                className="h-full w-full scale-125 object-contain"
+                className="h-full w-full scale-125 object-contain p-1"
               />
             </div>
           ) : (
